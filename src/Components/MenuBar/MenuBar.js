@@ -15,37 +15,37 @@ function MenuBar()
 
         switch (time.getDay())
         {
-            case 0:
+            case 1:
             {
                 response += "Monday ";
                 break;
             }
-            case 1:
+            case 2:
             {
                 response += "Tuesday ";
                 break;
             }
-            case 2:
+            case 3:
             {
                 response += "Wednesday ";
                 break;
             }
-            case 3:
+            case 4:
             {
                 response += "Thursday ";
                 break;
             }
-            case 4:
+            case 5:
             {
                 response += "Friday ";
                 break;
             }
-            case 5:
+            case 6:
             {
                 response += "Saturday "
                 break;
             }
-            case 6:
+            case 7:
             {
                 response += "Sunday "
                 break;

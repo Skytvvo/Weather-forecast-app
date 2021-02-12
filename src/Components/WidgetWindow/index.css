@@ -1,0 +1,23 @@
+#WidgetWindow
+{
+    padding: 2%;
+    width: 85%;
+    height: 94%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(30%,45%));
+    grid-gap: 2%;
+    justify-content: center;
+}
+
+.Widget
+{
+    cursor: pointer;
+    box-shadow: 0 0 5px 0 #000000;
+    border-radius: 0 0 10px 10px;
+    transition: 0.3s;
+}
+.Widget:hover
+{
+    box-shadow: 0 3px 5px 0 #000000;
+}
