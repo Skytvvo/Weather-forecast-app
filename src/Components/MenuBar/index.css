@@ -1,0 +1,63 @@
+.Bar_Top
+{
+    padding: 10px;
+    margin: 0 2%;
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 5px 0 #000000;
+    border-radius:0 0 5px 5px;
+}
+
+
+
+
+
+/*General styles*/
+.Bar_Top_Btn, .Bar_Top_Btn_Interface button
+{
+    cursor: pointer;
+    margin: 3px;
+    padding: 5px;
+    outline: none;
+    border-radius: 5px;
+    background: none;
+    transition: 0.2s;
+    border: 1px solid #000000;
+}
+
+.Bar_Top_Btn img, .Bar_Top_Btn_Interface button img
+{
+    height: 100%;
+}
+
+.Bar_Top_Btn:hover, .Bar_Top_Btn_Interface button:hover
+{
+    box-shadow: 0 0 5px 0 #000000;
+}
+
+
+/*Central date*/
+
+.Bar_Top_Date
+{
+    text-align: center;
+    height: 100%;
+    padding: 10px;
+    font-size: x-large;
+}
+
+.Bar_Top_Btn_Interface
+{
+    display: flex;
+    height: 100%;
+}
+
+.Bar_Top_Btn_Interface button
+{
+    outline: none;
+    border-radius: 5px;
+
+}
+
