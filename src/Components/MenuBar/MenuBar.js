@@ -6,7 +6,7 @@ import ExitImage from "../../images/interface/exit.svg";
 
 function MenuBar()
 {
-    const [getTime,setTime] = useState(null);
+    const [getTime,setTime] = useState("");
 
     const currentTime = () => {
         let response = "";
@@ -52,11 +52,21 @@ function MenuBar()
             }
         }
         response += time.getDate() + "th, ";
-        response += time.getHours() + ':' + time.getMinutes();
+        response += time.getHours();
+
+        if(time.getSeconds() % 2 === 0)
+            response += ':';
+        else
+            response+= ' ';
+
+        if(time.getMinutes() < 10)
+            response += '0';
+
+        response += time.getMinutes();
 
         return response;
     }
-    
+
     setInterval(() => setTime(currentTime()) , 1000 )
 
 

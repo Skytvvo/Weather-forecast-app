@@ -1,0 +1,50 @@
+.UserControlsBar
+{
+    padding-top: 10px;
+    width: 15%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+.UserControlsBar button
+{
+    font-size: large;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 80%;
+    outline: none;
+    border: none;
+    padding: 20px 20px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+.UserControlsBar button:hover
+{
+    box-shadow: 0 3px 5px 0 #000000;
+}
+
+#NewWidget
+{
+    color: #ffffff;
+    background: #00ff37;
+}
+#NewWidget:hover
+{
+    background: #84ff89;
+}
+#RefreshWidget
+{
+    background: #ffdb00;
+    color: #ffffff;
+}
+#RefreshWidget:hover
+{
+    background: #fff530;
+}
+#SetHome
+{
+    background: #e4e4e4;
+
+}
+
