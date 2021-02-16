@@ -1,25 +1,19 @@
 import React,{useState} from "react";
+import Widget from "./Widget/Widget";
 import "./index.css";
 
 
-function WidgetWindow()
+function WidgetWindow({widgets,
+                      theme})
 {
-    const [widgetCount,setWidgetCount] = useState(9);
 
 
 
     return(
-        <div id={"WidgetWindow"} >
-            <div className={"Widget"}>
-
-            </div>
-             <div className={"Widget"}>
-
-             </div>
-
-
-
-
+        <div id={"WidgetWindow" + theme} >
+            {widgets.map((item)=>{
+                return <Widget theme={theme}/>
+            })}
         </div>
     )
 }
