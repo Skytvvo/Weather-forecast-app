@@ -16,8 +16,26 @@
     box-shadow: 0 0 5px 0 #000000;
     border-radius: 0 0 10px 10px;
     transition: 0.3s;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
 }
 .Widget:hover
 {
     box-shadow: 0 3px 5px 0 #000000;
+}
+
+.Today
+{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Week
+{
+    width: 100%;
+    height: 50%;
 }

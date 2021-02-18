@@ -23,20 +23,6 @@ function App() {
     }]);
     const [theme,setTheme] = useState("")
 
-    useEffect(()=>{
-        widgets.forEach((item)=>{
-            fetch("http://localhost:9999/forecast",
-                {
-                    method:"POST",
-                    headers:{
-                        "Content-Type":'application/json;charset=utf-8'
-                    },
-                    body:JSON.stringify(item)
-                })
-                .then(data => console.log(data))
-        })
-    })
-
     const onAddWidget = (widget) =>{
             const newWidgets = [
                 ...widgets,widget

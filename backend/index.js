@@ -59,6 +59,7 @@ app.post("/forecast",cors(),(req,res)=>{
         request(new OptionsTemplateAPI(req.body.Name, req.body.Country, req.body.lat,req.body.lon),(error, response, body)=>{
             res.send(body)
         })
+
 })
 app.listen(PORT, ()=>console.log(`The server is running on the PORT ${PORT}`));
 

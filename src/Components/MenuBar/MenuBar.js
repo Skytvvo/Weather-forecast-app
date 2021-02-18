@@ -45,7 +45,7 @@ function MenuBar()
                 response += "Saturday "
                 break;
             }
-            case 7:
+            case 0:
             {
                 response += "Sunday "
                 break;
