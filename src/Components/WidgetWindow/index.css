@@ -39,3 +39,62 @@
     width: 100%;
     height: 50%;
 }
+.day
+{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+.day_png
+{
+    display: flex;
+    width: 100%;
+    height: 40%;
+    justify-content: space-between;
+}
+.day_png p
+{
+    padding: 10px;
+    height: 100%;
+    font-size: x-large;
+    font-weight: bold;
+    text-align: right;
+
+}
+.day img
+{
+    height: 100%;
+    align-self: center;
+    justify-self: center;
+}
+
+.forecast_day
+{
+    height: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.day_props
+{
+    padding: 10px;
+    width: 33%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.day_props img
+{
+    width: 20%;
+}
+.day_props span
+{    text-align: left;
+    padding-left: 10px;
+    font-weight: bold;
+    width: 80%;
+}

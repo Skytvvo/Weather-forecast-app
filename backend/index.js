@@ -15,7 +15,7 @@ function OptionsTemplateAPI(Name, Country, lat, lon)
         lat,
         lon,
         cnt: '7',
-        units: 'metric or imperial'
+        units: 'metric'
     };
     this.headers = {
         'x-rapidapi-key': 'a141f63156msh59a2ecb65d6cadcp16cbe7jsnad12f6ea7364',
