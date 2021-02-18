@@ -11,8 +11,8 @@ function WidgetWindow({widgets,
 
     return(
         <div id={"WidgetWindow" + theme} >
-            {widgets.map((item)=>{
-                return <Widget theme={theme}/>
+            {widgets.map((item, key)=>{
+                return <Widget key={key} theme={theme} data={item}/>
             })}
         </div>
     )
