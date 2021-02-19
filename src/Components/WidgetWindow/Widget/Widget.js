@@ -66,7 +66,24 @@ const Widget = ({theme, data}) => {
     }
 
     const GetMonthDay = (time) =>{
-        return new Date(time*1000).getDate();
+        let date = new Date(time*1000);
+        let day  = `${date.getDate()}th `;
+        switch (date.getMonth())
+        {
+            case 0: day+="January"; break;
+            case 1: day+="February"; break;
+            case 2: day+="March"; break;
+            case 3: day+="April"; break;
+            case 4: day+="May"; break;
+            case 5: day+="June"; break;
+            case 6: day+="July"; break;
+            case 7: day+="August"; break;
+            case 8: day+="September"; break;
+            case 9: day+="October"; break;
+            case 10: day+="November"; break;
+            case 11: day+="December"; break;
+        }
+        return day;
     }
 
 
@@ -78,6 +95,7 @@ const Widget = ({theme, data}) => {
                         <img src={
                             forecast?(` http://openweathermap.org/img/wn/${forecast.list[0].weather[0].icon}.png`):("")
                         } alt={`${forecast?forecast.list[0].weather[0].description:""}`}/>
+                        <p>{GetMonthDay(forecast.list[0].dt)}</p>
                         <p>
                             { forecast?(GetWeekDay(forecast.list[0].dt)):("")}
                             {forecast?(`, ${forecast.city.name} `):("")}
@@ -102,7 +120,21 @@ const Widget = ({theme, data}) => {
 
             </div>
             <div className={"Week"}>
-
+                {forecast?(forecast.list.map((item,key)=>{
+                    if(key===0)
+                        return ;
+                    return <div key={key} className={"Week_props"}>
+                                <div className="props_img">
+                                    <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`} alt=""/>
+                                </div>
+                                <div className="props_temperature">
+                                    <span>{item.temp.day}{'\u00b0'}</span>
+                                </div>
+                                <div className="props_weekday">
+                                    <span>{GetWeekDay(item.dt)}</span>
+                                </div>
+                            </div>
+                })):("")}
             </div>
         </div>
     )
