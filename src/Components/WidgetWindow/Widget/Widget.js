@@ -20,9 +20,8 @@ const Widget = ({theme, data}) => {
             .then(response => response.json())
             .then(response=> {
                 setForecast(response);
-                return response;
             })
-            .then((response => console.log(response)))
+
 
 
     },[])
@@ -86,6 +85,13 @@ const Widget = ({theme, data}) => {
         return day;
     }
 
+    const GetDescription = (str) =>
+    {
+        if(str === "" || str === null)
+            return "";
+        return str[0].toUpperCase() + str.slice(1);
+    }
+
 
     return(
         <div className={"Widget" + theme}>
@@ -95,7 +101,7 @@ const Widget = ({theme, data}) => {
                         <img src={
                             forecast?(` http://openweathermap.org/img/wn/${forecast.list[0].weather[0].icon}.png`):("")
                         } alt={`${forecast?forecast.list[0].weather[0].description:""}`}/>
-                        <p>{GetMonthDay(forecast.list[0].dt)}</p>
+                        <p>{forecast?(GetDescription(forecast.list[0].weather[0].description)):""}</p>
                         <p>
                             { forecast?(GetWeekDay(forecast.list[0].dt)):("")}
                             {forecast?(`, ${forecast.city.name} `):("")}

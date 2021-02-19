@@ -2,6 +2,7 @@ import React,{useState,useEffect} from "react";
 import TopBar from "./Components/MenuBar/MenuBar";
 import UserControls from "./Components/UserConstols/UserControls";
 import WidgetWindow from "./Components/WidgetWindow/Window";
+import Panel from "./Components/NewWidget/NewWidget";
 
 function App() {
 
@@ -21,6 +22,8 @@ function App() {
             },
             Country: "GB"
     }]);
+
+    const [panel,setPanel] =  useState(false)
     const [theme,setTheme] = useState("")
 
     const onAddWidget = (widget) =>{
@@ -28,6 +31,10 @@ function App() {
                 ...widgets,widget
             ];
             setWidgets(newWidgets);
+    }
+
+    const onChangeAddAnItem = (expression) => {
+        setPanel(expression)
     }
 
     const onRefreshWidgets = () =>{
@@ -47,7 +54,10 @@ function App() {
             onAddWidget={onAddWidget}
             onRefreshWidgets={onRefreshWidgets}
             onSetHome={onSetHome}
-            theme={theme}/>
+            theme={theme}
+            onChangePanel={onChangeAddAnItem}/>
+
+          {panel?<Panel  onChangePanel={onChangeAddAnItem}/>:""}
 
         <WidgetWindow widgets={widgets}
                       theme={theme}/>

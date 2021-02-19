@@ -5,20 +5,19 @@ import "./index.css";
 function UserControls({widgets,
                           onAddWidget,
                           onRefreshWidgets,
-                          onSetHome})
+                          onSetHome,
+                          onChangePanel
+                      })
 {
     const CreateNewWidget=()=>{
         if(widgets.length===9)
         {
             alert("Widgets full")
-            return;
         }
-        let town = prompt("Enter town");
-        onAddWidget({Town:town})
+        onChangePanel(true);
     }
 
     const SetHomeHandler = ()=>{
-
         onSetHome();
     }
 
