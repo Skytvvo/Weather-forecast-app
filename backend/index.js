@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const fs = require("fs");
 const request = require('request');
 const cors = require('cors');
 
@@ -47,7 +48,6 @@ const PORT = 9999;
 
 //Handled options request, allowed all origins
 app.options("*",cors());
-
 app.get("/", (req,res)=>{
     request(new OptionsTemplateAPI("san francisco","us",35,139), function (error, response, body) {
         if (error) throw new Error(error);
@@ -59,6 +59,17 @@ app.post("/forecast",cors(),(req,res)=>{
         request(new OptionsTemplateAPI(req.body.Name, req.body.Country, req.body.lat,req.body.lon),(error, response, body)=>{
             res.send(body)
         })
+
+})
+
+app.post("/city", async (req,res)=>{
+
+    let cities;
+    await fs.readFile("city.list.json","utf8", (error,data)=>{
+        if(error)
+            throw error
+        cities = data;
+    })
 
 })
 app.listen(PORT, ()=>console.log(`The server is running on the PORT ${PORT}`));
