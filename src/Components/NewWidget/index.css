@@ -5,7 +5,7 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+
     backdrop-filter:blur(5px);
 }
 
@@ -18,6 +18,7 @@
 
 .panel_content
 {
+    margin-top: 20px;
     position: absolute;
     padding: 5px 10px;
     width: 400px;
@@ -29,14 +30,15 @@
     justify-content: space-between;
     align-items: center;
     transition: 0.3s;
+    flex-wrap: wrap;
 
 }
 
-.panel_input, .panel_btn
+.panel_input
 {
     padding: 10px;
     outline: none;
-    height: 100%;
+    height: 90%;
     border: none;
     border-radius: inherit;
     font-weight: bold;
@@ -44,7 +46,7 @@
 
 .panel_input
 {
-    width: 70%;
+    width: 90%;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom: 1px solid gray;
@@ -55,14 +57,7 @@
     height: 100%;
 }
 
-.panel_btn
-{
-    background: white;
-    box-shadow: 0 0 2px 0 #000000;
-    cursor: pointer;
-    width: 20%;
-    transition: 0.2s;
-}
+
 .panel_btn:hover
 {
     background: #69ff66;
@@ -90,6 +85,41 @@
 .close_panel:hover
 {
     box-shadow: inset 0 0 10px 2px #CD0D00;
+}
+.suggest_container
+{
+    width: 100%;
+    height: 10%;
+}
+.suggest_response
+{
+    overflow: auto;
+    margin-top: 10px;
+    left: 0;
+    right: 0;
+    position: absolute;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    box-shadow: 0 2px 5px 0 #000000;
+}
+.suggest_item:last-child
+{
+    border-radius: inherit;
+}
+.suggest_item
+{
+    transition: 0.2s;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px;
+    width: 100%;
+}
+.suggest_item:hover
+{
+    background: #d8d8d8;
 }
 
 

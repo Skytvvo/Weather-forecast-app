@@ -21,9 +21,6 @@ const Widget = ({theme, data}) => {
             .then(response=> {
                 setForecast(response);
             })
-
-
-
     },[])
 
     const GetWeekDay = (time) =>{

@@ -8,19 +8,19 @@ function App() {
 
     const [widgets,setWidgets] = useState([
         {
-            Name:"Minsk",
+            name:"Minsk",
             coord:{
                 lon:27.566668,
                 lat: 53.900002
             },
-            Country:"BY"
+            country:"BY"
         }, {
-            Name:"London",
+            name:"London",
             coord:{
                    lon:  -0.12574,
                     lat: 51.50853
             },
-            Country: "GB"
+            country: "GB"
     }]);
 
     const [panel,setPanel] =  useState(false)
@@ -51,16 +51,21 @@ function App() {
 
         <UserControls
             widgets={widgets}
-            onAddWidget={onAddWidget}
             onRefreshWidgets={onRefreshWidgets}
             onSetHome={onSetHome}
             theme={theme}
-            onChangePanel={onChangeAddAnItem}/>
+            onChangePanel={onChangeAddAnItem}
+        />
 
-          {panel?<Panel  onChangePanel={onChangeAddAnItem}/>:""}
+          {panel?<Panel
+              onAdd={onAddWidget}
+              onChangePanel={onChangeAddAnItem}
+          />:""}
 
-        <WidgetWindow widgets={widgets}
-                      theme={theme}/>
+        <WidgetWindow
+            widgets={widgets}
+            theme={theme}
+        />
       </div>
   );
 }

@@ -3,7 +3,6 @@ import Widget from "../WidgetWindow/Widget/Widget";
 import "./index.css";
 
 function UserControls({widgets,
-                          onAddWidget,
                           onRefreshWidgets,
                           onSetHome,
                           onChangePanel
