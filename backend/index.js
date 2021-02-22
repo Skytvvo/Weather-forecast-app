@@ -49,18 +49,65 @@ const PORT = 9999;
 //Handled options request, allowed all origins
 app.options("*",cors());
 app.get("/", (req,res)=>{
-    request(new OptionsTemplateAPI("san francisco","us",35,139), function (error, response, body) {
+    request(new OptionsTemplateAPI("san francisco","us",35,139),
+        function (error, response, body) {
         if (error) throw new Error(error);
         res.send(body)
     });
 })
 //Allowed all origins
 app.post("/forecast",cors(),(req,res)=>{
-        request(new OptionsTemplateAPI(req.body.name, req.body.country, req.body.lat,req.body.lon),(error, response, body)=>{
+        request(new OptionsTemplateAPI(req.body.name, req.body.country, req.body.lat,req.body.lon),
+            (error, response, body)=>{
             res.send(body)
         })
 
 })
+
+
+app.post("/login",(req,res)=>{
+
+})
+
+
+app.post("/reg", (req,res)=> {
+    let pr = new Promise((resolve,reject)=>{
+        fs.readFile("users.json", (error, data) => {
+            if (error)
+                reject(error)
+                resolve(data)
+        })
+    })
+        .then(data=>JSON.parse(data))
+        .then(data => {
+            let newUser = {
+                login:req.body.login,
+                password:req.body.password,
+                cities:[],
+                theme: ""
+            }
+            let matches = data.filter(item => item.login === newUser.login);
+            res.append('Access-Control-Allow-Origin', ['*']);
+            res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+            res.append('Access-Control-Allow-Headers', 'Content-Type');
+            if(data.length === 0 || matches.length === 0)
+            {
+                let updatedData = [...data,newUser];
+                res.status(200);
+                res.json(newUser);
+                fs.writeFile("users.json",JSON.stringify(updatedData), (err)=>{
+                    console.log(err)
+                });
+            }
+            else{
+                res.status(204);
+                res.send();
+            }
+
+        })
+        .catch(err=>console.log(err))
+})
+
 
 app.post("/city",  async (req,res)=>{
     let reader = new Promise((resolve,reject) => {
@@ -85,3 +132,5 @@ app.post("/city",  async (req,res)=>{
 })
 
 app.listen(PORT, ()=>console.log(`The server is running on the PORT ${PORT}`));
+
+

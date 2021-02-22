@@ -10,10 +10,33 @@ export default ({onAddWidget,onSetUser}) => {
     const [password, setPassword] = useState("");
 
     const logToApp = () =>{
-        console.log(login,password)
+        fetch("http://localhost:9999/login",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json;charset=utf-8"
+            },
+            body:JSON.stringify({
+                login,
+                password
+            })
+        })
+            .then(data=>console.log(data))
+            .catch(err=>console.log(err))
     }
-    const regToApp =()=>{
 
+    const regToApp=()=>{
+        fetch("http://localhost:9999/reg",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json;charset=utf-8"
+            },
+            body:JSON.stringify({
+                login,
+                password
+            })
+        })
+            .then(data=>console.log(data))
+            .catch(err=>console.log(err))
     }
 
     return(
@@ -33,7 +56,7 @@ export default ({onAddWidget,onSetUser}) => {
                         type="text"
                         placeholder={"Password"}/>
                     {typeAuth?
-                        <button>Sing up</button>
+                        <button onClick={regToApp}>Sing up</button>
                         :
                         <button onClick={logToApp}>Login</button>}
                 </div>
