@@ -13,12 +13,19 @@ function App() {
     const [user,setUser] = useState(null);
 
     const onAddWidget = (widget) =>{
-        console.log(widget)
-            const newWidgets = [
-                ...widgets,widget
-            ];
-
-            setWidgets(newWidgets);
+        const newWidgets = [
+            ...widgets,widget
+        ];
+        setWidgets(newWidgets);
+        user.cities = newWidgets;
+        fetch("http://localhost:9999/widgets/add",{
+            method:"PUT",
+            headers:{
+                "Content-Type":"application/json;charset=utf-8"
+            },
+            body:JSON.stringify(user)
+        })
+            .catch(err=>console.log(err))
     }
     const onSetUser = (userData) => {
         const newWidgets = [...widgets,...userData.cities]

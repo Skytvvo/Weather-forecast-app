@@ -25,23 +25,6 @@ function OptionsTemplateAPI(Name, Country, lat, lon)
     }
 }
 
-const options = {
-    method: 'GET',
-    url: 'https://community-open-weather-map.p.rapidapi.com/forecast/daily',
-    qs: {
-        q: 'san francisco,us',
-        lat: '35',
-        lon: '139',
-        cnt: '7',
-        units: 'metric or imperial'
-    },
-    headers: {
-        'x-rapidapi-key': 'a141f63156msh59a2ecb65d6cadcp16cbe7jsnad12f6ea7364',
-        'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
-        useQueryString: true
-    }
-};
-
 
 
 const PORT = 9999;
@@ -63,6 +46,7 @@ app.post("/forecast",cors(),(req,res)=>{
         })
 
 })
+
 
 
 app.post("/login",(req,res)=>{
@@ -88,6 +72,7 @@ app.post("/login",(req,res)=>{
             {
                 res.status(404);
                 res.send();
+
                 return data;
             }
 
@@ -144,7 +129,7 @@ app.post("/reg", (req,res)=> {
 
 
 app.post("/city",  async (req,res)=>{
-    let reader = new Promise((resolve,reject) => {
+    new Promise((resolve,reject) => {
           fs.readFile("city.list.json","utf8", (error,data)=>{
             if(error)
                 reject(error)
@@ -162,6 +147,51 @@ app.post("/city",  async (req,res)=>{
             return data.slice(0,10);
         })
         .then(data => res.json(data))
+        .catch(err=>console.log(err))
+})
+
+app.put("/widgets/add",(req,res)=>{
+    new Promise((resolve, reject)=>{
+        fs.readFile("users.json",(error, data)=>{
+            if(error)
+                reject(error);
+            resolve(data);
+        })
+    })
+        .then(data=>JSON.parse(data))
+        .then(data=>{
+            let user = data.findIndex(item => item.login === req.body.login);
+
+            res.append('Access-Control-Allow-Origin', ['*']);
+            res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+            res.append('Access-Control-Allow-Headers', 'Content-Type');
+
+            if(user === -1)
+            {
+                throw new Error("Unknown user")
+            }
+            else
+            {
+                if(data[user].password !== req.body.password)
+                {
+                    res.status(403);
+                    res.send();
+                    throw new Error("Incorrect password");
+                }
+
+                data[user].cities = req.body.cities;
+                res.status(200);
+                res.send()
+                return data;
+            }
+
+
+        })
+        .then(data=>{
+            fs.writeFile("users.json", JSON.stringify(data),(err)=>{
+                throw err;
+            })
+        })
         .catch(err=>console.log(err))
 })
 
