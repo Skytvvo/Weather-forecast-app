@@ -13,16 +13,16 @@ function App() {
     const [user,setUser] = useState(null);
 
     const onAddWidget = (widget) =>{
+        console.log(widget)
             const newWidgets = [
                 ...widgets,widget
             ];
-            console.log(widget,newWidgets)
+
             setWidgets(newWidgets);
     }
     const onSetUser = (userData) => {
-        userData.cities.forEach(item=>{
-            onAddWidget(item)
-        })
+        const newWidgets = [...widgets,...userData.cities]
+        setWidgets(newWidgets);
         setTheme(userData.theme);
         setUser(userData)
     }

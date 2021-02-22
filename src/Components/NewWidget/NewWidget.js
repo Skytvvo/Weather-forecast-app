@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import "./index.css";
 import Error from "../../images/interface/warning.svg";
-import Close from "../../images/interface/error.svg";
 
 const Panel = ({onChangePanel, onAdd}) =>{
 
