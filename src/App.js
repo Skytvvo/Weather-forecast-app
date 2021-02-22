@@ -3,10 +3,12 @@ import TopBar from "./Components/MenuBar/MenuBar";
 import UserControls from "./Components/UserConstols/UserControls";
 import WidgetWindow from "./Components/WidgetWindow/Window";
 import Panel from "./Components/NewWidget/NewWidget";
-
+import Auth from "./Components/Auth/Auth";
 function App() {
 
-    const [widgets,setWidgets] = useState([
+    const [widgets,setWidgets] = useState([]);
+/*
+    [
         {
             name:"Minsk",
             coord:{
@@ -21,16 +23,21 @@ function App() {
                     lat: 51.50853
             },
             country: "GB"
-    }]);
+    }]*/
 
     const [panel,setPanel] =  useState(false)
     const [theme,setTheme] = useState("")
+
+    const [user,setUser] = useState(null);
 
     const onAddWidget = (widget) =>{
             const newWidgets = [
                 ...widgets,widget
             ];
             setWidgets(newWidgets);
+    }
+    const onSetUser = (userData) => {
+        setUser(userData)
     }
 
     const onChangeAddAnItem = (expression) => {
@@ -47,25 +54,29 @@ function App() {
 
   return (
       <div className="window">
-        <TopBar theme={theme}/>
 
-        <UserControls
-            widgets={widgets}
-            onRefreshWidgets={onRefreshWidgets}
-            onSetHome={onSetHome}
-            theme={theme}
-            onChangePanel={onChangeAddAnItem}
-        />
+          {!user?
+              (<Auth onAddWidget={onAddWidget} onSetUser={onSetUser} />)
+              :("")}
+          {user?<TopBar theme={theme}/>:""}
 
-          {panel?<Panel
+          {user?<UserControls
+              widgets={widgets}
+              onRefreshWidgets={onRefreshWidgets}
+              onSetHome={onSetHome}
+              theme={theme}
+              onChangePanel={onChangeAddAnItem}
+          />:""}
+
+          {panel&&user?<Panel
               onAdd={onAddWidget}
               onChangePanel={onChangeAddAnItem}
           />:""}
 
-        <WidgetWindow
-            widgets={widgets}
-            theme={theme}
-        />
+          {user?<WidgetWindow
+              widgets={widgets}
+              theme={theme}
+          />:""}
       </div>
   );
 }
