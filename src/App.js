@@ -7,24 +7,6 @@ import Auth from "./Components/Auth/Auth";
 function App() {
 
     const [widgets,setWidgets] = useState([]);
-/*
-    [
-        {
-            name:"Minsk",
-            coord:{
-                lon:27.566668,
-                lat: 53.900002
-            },
-            country:"BY"
-        }, {
-            name:"London",
-            coord:{
-                   lon:  -0.12574,
-                    lat: 51.50853
-            },
-            country: "GB"
-    }]*/
-
     const [panel,setPanel] =  useState(false)
     const [theme,setTheme] = useState("")
 
@@ -34,9 +16,14 @@ function App() {
             const newWidgets = [
                 ...widgets,widget
             ];
+            console.log(widget,newWidgets)
             setWidgets(newWidgets);
     }
     const onSetUser = (userData) => {
+        userData.cities.forEach(item=>{
+            onAddWidget(item)
+        })
+        setTheme(userData.theme);
         setUser(userData)
     }
 
@@ -56,7 +43,7 @@ function App() {
       <div className="window">
 
           {!user?
-              (<Auth onAddWidget={onAddWidget} onSetUser={onSetUser} />)
+              (<Auth onSetUser={onSetUser} />)
               :("")}
           {user?<TopBar theme={theme}/>:""}
 

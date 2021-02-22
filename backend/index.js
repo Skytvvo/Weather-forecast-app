@@ -59,19 +59,53 @@ app.get("/", (req,res)=>{
 app.post("/forecast",cors(),(req,res)=>{
         request(new OptionsTemplateAPI(req.body.name, req.body.country, req.body.lat,req.body.lon),
             (error, response, body)=>{
-            res.send(body)
+            res.send(body);
         })
 
 })
 
 
 app.post("/login",(req,res)=>{
+    new Promise((resolve,reject) => {
+        fs.readFile("users.json",(error,data)=>
+        {
+            if(error)
+                reject(error);
+            resolve(data);
+        })
+    })
+        .then(data=>JSON.parse(data))
+        .then(data=>{
+            let match = data.find((element, index, array)=>{
+                return element.login === req.body.login;
+            })
 
+            res.append('Access-Control-Allow-Origin', ['*']);
+            res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+            res.append('Access-Control-Allow-Headers', 'Content-Type');
+
+            if(match===undefined)
+            {
+                res.status(404);
+                res.send();
+                return data;
+            }
+
+            if(match.password !== req.body.password)
+            {
+                res.status(403);
+                res.send();
+                return data;
+            }
+
+            res.status(200);
+            res.json(match);
+        })
 })
 
 
 app.post("/reg", (req,res)=> {
-    let pr = new Promise((resolve,reject)=>{
+        new Promise((resolve,reject)=>{
         fs.readFile("users.json", (error, data) => {
             if (error)
                 reject(error)

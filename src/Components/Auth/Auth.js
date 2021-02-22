@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import "./index.css";
 
 
-export default ({onAddWidget,onSetUser}) => {
+export default ({onSetUser}) => {
 
     /*false - login, true - sing up*/
     const [typeAuth, setTypeAuth] = useState(false);
@@ -20,7 +20,21 @@ export default ({onAddWidget,onSetUser}) => {
                 password
             })
         })
-            .then(data=>console.log(data))
+            .then(data=>{
+                if(data.status === 404)
+                {
+                    throw new Error("404")
+                }
+                if(data.status === 403)
+                {
+                    throw new Error("403")
+                }
+                return data;
+            })
+            .then(data=>data.json())
+            .then(data=>{
+                onSetUser(data)
+            })
             .catch(err=>console.log(err))
     }
 
