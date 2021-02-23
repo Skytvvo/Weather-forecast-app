@@ -71,6 +71,7 @@ function MenuBar()
 
     const logOut = () =>{
         localStorage.removeItem("user");
+        document.location.reload();
     }
 
     return(
