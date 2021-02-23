@@ -114,7 +114,7 @@ app.post("/reg", (req,res)=> {
                 let updatedData = [...data,newUser];
                 res.status(200);
                 res.json(newUser);
-                fs.writeFile("users.json",JSON.stringify(updatedData), (err)=>{
+                fs.writeFile("users.json",JSON.stringify(updatedData, null, '\t'), (err)=>{
                     console.log(err)
                 });
             }
@@ -188,7 +188,7 @@ app.put("/widgets/add",(req,res)=>{
 
         })
         .then(data=>{
-            fs.writeFile("users.json", JSON.stringify(data),(err)=>{
+            fs.writeFile("users.json", JSON.stringify(data, null, '\t'),(err)=>{
                 if(err)
                     throw err;
             })

@@ -2,9 +2,13 @@ import React, {useEffect, useState} from "react";
 import Humidity from "../../../images/weather/004-humidity.svg";
 import Speed from "../../../images/weather/003-windsock.svg";
 import Temperature from  "../../../images/weather/celsius.svg";
+import Delete from "../../../images/interface/error.svg";
 import "../index.css";
 
-const Widget = ({theme, data}) => {
+/*todo
+* fix bugs for connections interrupts
+* */
+const Widget = ({theme, data, onDelete}) => {
 
     const [forecast, setForecast] = useState(null)
 
@@ -21,7 +25,11 @@ const Widget = ({theme, data}) => {
             .then(response=> {
                 setForecast(response);
             })
+
     },[])
+    useEffect(()=>{
+        console.log(data)
+    })
 
     const GetWeekDay = (time) =>{
         switch (new Date(time * 1000).getDay())
@@ -139,6 +147,7 @@ const Widget = ({theme, data}) => {
                             </div>
                 })):("")}
             </div>
+            <img src={Delete} onClick={()=>onDelete(forecast)} className={"delete_widget"} alt="delete_widget"/>
         </div>
     )
 }

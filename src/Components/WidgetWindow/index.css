@@ -12,6 +12,7 @@
 
 .Widget
 {
+    position: relative;
     cursor: pointer;
     box-shadow: 0 0 5px 0 #000000;
     border-radius: 0 0 10px 10px;
@@ -141,3 +142,31 @@
     width: 100%;
     font-weight: bold;
 }
+.delete_widget
+{
+    cursor: pointer;
+    visibility: hidden;
+    width: 25px;
+    position: absolute;
+    right: -10px;
+    top:-10px;
+    transition:  0.5s;
+    opacity: 0;
+    border-radius: 50px;
+}
+
+.Widget:hover .delete_widget
+{
+    visibility: visible;
+    opacity: 1;
+}
+.delete_widget:hover
+{
+    box-shadow: 0 0 10px 0 #CD0D00;
+    background: #CD0D00;
+
+
+
+
+}
+

@@ -44,7 +44,7 @@ export default ({onSetUser}) => {
     }
 
     const regToApp=()=>{
-        fetch("http://localhost:9999/reg",{
+         fetch("http://localhost:9999/reg",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json;charset=utf-8"

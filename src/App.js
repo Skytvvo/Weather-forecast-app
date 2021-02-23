@@ -18,15 +18,31 @@ function App() {
         ];
         setWidgets(newWidgets);
         user.cities = newWidgets;
+        updateWidgets(user)
+    }
+    const updateWidgets=(obj)=>{
         fetch("http://localhost:9999/widgets/add",{
             method:"PUT",
             headers:{
                 "Content-Type":"application/json;charset=utf-8"
             },
-            body:JSON.stringify(user)
+            body:JSON.stringify(obj)
         })
             .catch(err=>console.log(err))
     }
+    useEffect(()=> {
+            console.log("Widgets updated", widgets)
+        }   ,[widgets]
+    )
+    const onDeleteWidget = (widget)=>{
+        console.log("удаляемый widget", widget.city)
+        const newWidgets = widgets.filter(item=>item.id!==widget.city.id)
+        console.log("До удаления", widgets)
+        setWidgets(newWidgets);
+        user.cities = newWidgets;
+        updateWidgets(user);
+    }
+
     const onSetUser = (userData) => {
         const newWidgets = [...widgets,...userData.cities]
         setWidgets(newWidgets);
@@ -63,16 +79,17 @@ function App() {
               theme={theme}
               onChangePanel={onChangeAddAnItem}
           />:""}
-
+          {user?<WidgetWindow
+              onDelete={onDeleteWidget}
+              widgets={widgets}
+              theme={theme}
+          />:""}
           {panel&&user?<Panel
               onAdd={onAddWidget}
               onChangePanel={onChangeAddAnItem}
           />:""}
 
-          {user?<WidgetWindow
-              widgets={widgets}
-              theme={theme}
-          />:""}
+
       </div>
   );
 }

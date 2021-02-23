@@ -1,1 +1,39 @@
-[{"login":"user1","password":"1234","cities":[],"theme":""},{"login":"user12","password":"1234","cities":[],"theme":""},{"login":"user","password":"1234","cities":[],"theme":""},{"login":"sky","password":"12","cities":[{"name":"Minsk","coord":{"lon":27.566668,"lat":53.900002},"country":"BY"},{"name":"London","coord":{"lon":-0.12574,"lat":51.50853},"country":"GB"},{"id":623549,"name":"Pinsk","state":"","country":"BY","coord":{"lon":26.0951,"lat":52.122898}}],"theme":""}]
+[
+	{
+		"login": "sky",
+		"password": "12",
+		"cities": [
+			{
+				"id": 2511020,
+				"name": "s'Arracó",
+				"state": "",
+				"country": "ES",
+				"coord": {
+					"lon": 2.39266,
+					"lat": 39.578171
+				}
+			},
+			{
+				"id": 6354985,
+				"name": "güngören merter",
+				"state": "",
+				"country": "TR",
+				"coord": {
+					"lon": 28.887951,
+					"lat": 41.007111
+				}
+			},
+			{
+				"id": 7303136,
+				"name": "kagoshima",
+				"state": "",
+				"country": "JP",
+				"coord": {
+					"lon": 130.556717,
+					"lat": 31.595791
+				}
+			}
+		],
+		"theme": ""
+	}
+]
