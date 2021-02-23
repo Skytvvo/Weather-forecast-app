@@ -189,7 +189,8 @@ app.put("/widgets/add",(req,res)=>{
         })
         .then(data=>{
             fs.writeFile("users.json", JSON.stringify(data),(err)=>{
-                throw err;
+                if(err)
+                    throw err;
             })
         })
         .catch(err=>console.log(err))

@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import "./index.css";
 
 
@@ -9,15 +9,16 @@ export default ({onSetUser}) => {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
 
-    const logToApp = () =>{
+    const logToApp = (log = login,pass=password) =>{
+
         fetch("http://localhost:9999/login",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json;charset=utf-8"
             },
             body:JSON.stringify({
-                login,
-                password
+                login:log,
+                password:pass
             })
         })
             .then(data=>{
@@ -34,6 +35,10 @@ export default ({onSetUser}) => {
             .then(data=>data.json())
             .then(data=>{
                 onSetUser(data)
+                return data;
+            })
+            .then(data => {
+                localStorage.setItem("user",JSON.stringify(data))
             })
             .catch(err=>console.log(err))
     }
@@ -49,9 +54,20 @@ export default ({onSetUser}) => {
                 password
             })
         })
-            .then(data=>console.log(data))
+            .then(data=>data.json())
+            .then(data=>onSetUser(data))
             .catch(err=>console.log(err))
     }
+
+    useEffect(()=>{
+
+        if(localStorage.getItem("user")!==null)
+        {
+            let user = JSON.parse(localStorage.getItem("user"));
+            logToApp(user.login,user.password)
+        }
+
+    },[])
 
     return(
         <div className={"auth"}>
@@ -70,9 +86,9 @@ export default ({onSetUser}) => {
                         type="text"
                         placeholder={"Password"}/>
                     {typeAuth?
-                        <button onClick={regToApp}>Sing up</button>
+                        <button onClick={()=>regToApp()}>Sing up</button>
                         :
-                        <button onClick={logToApp}>Login</button>}
+                        <button onClick={()=>logToApp()}>Login</button>}
                 </div>
                 <div className="auth_change_type">
                     <span>

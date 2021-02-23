@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./index.css";
 import LeftBarImage from "../../images/interface/menu-4.svg";
 import DarkThemeImage from "../../images/interface/sun.svg";
@@ -67,8 +67,11 @@ function MenuBar()
         return response;
     }
 
-    setInterval(() => setTime(currentTime()) , 1000 )
+    useEffect(()=>{setInterval(() => setTime(currentTime()) , 1000 )},[])
 
+    const logOut = () =>{
+        localStorage.removeItem("user");
+    }
 
     return(
         <div className="Bar_Top">
@@ -86,7 +89,7 @@ function MenuBar()
                 <button>
                     <img alt="Dark Theme" src={DarkThemeImage}/>
                 </button>
-                <button>
+                <button onClick={()=>logOut()}>
                     <img alt="Logout" src={ExitImage}/>
                 </button>
             </div>
