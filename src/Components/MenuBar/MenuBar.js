@@ -3,8 +3,10 @@ import "./index.css";
 import LeftBarImage from "../../images/interface/menu-4.svg";
 import DarkThemeImage from "../../images/interface/sun.svg";
 import ExitImage from "../../images/interface/exit.svg";
+import Refresh from "../../images/interface/repeat.svg";
+import AddWidget from "../../images/interface/add.svg";
 
-function MenuBar()
+const MenuBar=({widgets, theme, onChangePanel}) =>
 {
     const [getTime,setTime] = useState("");
 
@@ -87,6 +89,12 @@ function MenuBar()
             </span>
 
             <div className="Bar_Top_Btn_Interface">
+                <button onClick={()=>onChangePanel(true)}>
+                    <img src={AddWidget} alt="add widget"/>
+                </button>
+                <button>
+                    <img src={Refresh} alt="refresh"/>
+                </button>
                 <button>
                     <img alt="Dark Theme" src={DarkThemeImage}/>
                 </button>

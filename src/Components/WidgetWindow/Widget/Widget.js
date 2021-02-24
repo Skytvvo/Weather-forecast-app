@@ -11,7 +11,7 @@ import "../index.css";
 const Widget = ({theme, data, onDelete}) => {
 
     const [forecast, setForecast] = useState(null)
-
+    const [apiLimit, setApiLimit]=useState(false);
     useEffect(()=>{
         fetch("http://localhost:9999/forecast",
             {
@@ -21,11 +21,20 @@ const Widget = ({theme, data, onDelete}) => {
                 },
                 body:JSON.stringify(data)
             })
+            .then(response=>{
+                if(response.status === 429)
+                    throw new Error(response.statusText)
+                return response
+            })
             .then(response => response.json())
             .then(response=> {
                 setForecast(response);
+                setApiLimit(false);
             })
-
+            .catch(err=>{
+                console.log(err);
+                setApiLimit(true);
+            })
     },[data])
 
 
@@ -101,9 +110,11 @@ const Widget = ({theme, data, onDelete}) => {
             <div className={"Today"}>
                 <div className="day">
                     <div className={"day_png"}>
-                        <img src={
-                            forecast?(` http://openweathermap.org/img/wn/${forecast.list[0].weather[0].icon}.png`):("")
-                        } alt={`${forecast?forecast.list[0].weather[0].description:""}`}/>
+                        {
+                            (forecast)?
+                                <img
+                                    src={`http://openweathermap.org/img/wn/${forecast.list[0].weather[0].icon}.png`
+                        } alt={`${forecast?forecast.list[0].weather[0].description:""}`}/>:""}
                         <p>{forecast?(GetDescription(forecast.list[0].weather[0].description)):""}</p>
                         <p>
                             { forecast?(GetWeekDay(forecast.list[0].dt)):("")}

@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from "react";
 import TopBar from "./Components/MenuBar/MenuBar";
-import UserControls from "./Components/UserConstols/UserControls";
 import WidgetWindow from "./Components/WidgetWindow/Window";
 import Panel from "./Components/NewWidget/NewWidget";
 import Auth from "./Components/Auth/Auth";
@@ -51,13 +50,6 @@ function App() {
         setPanel(expression)
     }
 
-    const onRefreshWidgets = () =>{
-
-    }
-
-    const onSetHome = () =>{
-
-    }
 
   return (
       <div className="window">
@@ -65,15 +57,21 @@ function App() {
           {!user?
               (<Auth onSetUser={onSetUser} />)
               :("")}
-          {user?<TopBar theme={theme}/>:""}
+          {user?
+              <TopBar
+                widgets={widgets}
+                theme={theme}
+                onChangePanel={onChangeAddAnItem}
+              />:
+              ""}
 
-          {user?<UserControls
+        {/*  {user?<UserControls
               widgets={widgets}
               onRefreshWidgets={onRefreshWidgets}
               onSetHome={onSetHome}
               theme={theme}
               onChangePanel={onChangeAddAnItem}
-          />:""}
+          />:""}*/}
           {user?<WidgetWindow
               onDelete={onDeleteWidget}
               widgets={widgets}

@@ -31,6 +31,7 @@ const PORT = 9999;
 
 //Handled options request, allowed all origins
 app.options("*",cors());
+
 app.get("/", (req,res)=>{
     request(new OptionsTemplateAPI("san francisco","us",35,139),
         function (error, response, body) {
@@ -42,7 +43,13 @@ app.get("/", (req,res)=>{
 app.post("/forecast",cors(),(req,res)=>{
         request(new OptionsTemplateAPI(req.body.name, req.body.country, req.body.lat,req.body.lon),
             (error, response, body)=>{
-            res.send(body);
+            if(response.statusCode===429)
+            {
+                res.status(429)
+                res.json("API limit")
+            }
+            else
+                res.send(body);
         })
 
 })

@@ -22,6 +22,56 @@
 					"lon": -0.12574,
 					"lat": 51.50853
 				}
+			},
+			{
+				"id": 884428,
+				"name": "Newlands",
+				"state": "",
+				"country": "ZW",
+				"coord": {
+					"lon": 31.081671,
+					"lat": -17.80806
+				}
+			},
+			{
+				"id": 623549,
+				"name": "Pinsk",
+				"state": "",
+				"country": "BY",
+				"coord": {
+					"lon": 26.0951,
+					"lat": 52.122898
+				}
+			},
+			{
+				"id": 636345,
+				"name": "Somero",
+				"state": "",
+				"country": "FI",
+				"coord": {
+					"lon": 23.53333,
+					"lat": 60.61667
+				}
+			},
+			{
+				"id": 30714,
+				"name": "Zalmat al Alya",
+				"state": "",
+				"country": "YE",
+				"coord": {
+					"lon": 44.09404,
+					"lat": 14.1023
+				}
+			},
+			{
+				"id": 3530,
+				"name": "Qabāghlū",
+				"state": "",
+				"country": "IR",
+				"coord": {
+					"lon": 46.168499,
+					"lat": 36.173302
+				}
 			}
 		],
 		"theme": ""
