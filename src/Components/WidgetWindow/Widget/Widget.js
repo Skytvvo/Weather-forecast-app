@@ -26,10 +26,8 @@ const Widget = ({theme, data, onDelete}) => {
                 setForecast(response);
             })
 
-    },[])
-    useEffect(()=>{
-        console.log(data)
-    })
+    },[data])
+
 
     const GetWeekDay = (time) =>{
         switch (new Date(time * 1000).getDay())

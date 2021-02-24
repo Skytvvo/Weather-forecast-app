@@ -30,14 +30,9 @@ function App() {
         })
             .catch(err=>console.log(err))
     }
-    useEffect(()=> {
-            console.log("Widgets updated", widgets)
-        }   ,[widgets]
-    )
+
     const onDeleteWidget = (widget)=>{
-        console.log("удаляемый widget", widget.city)
         const newWidgets = widgets.filter(item=>item.id!==widget.city.id)
-        console.log("До удаления", widgets)
         setWidgets(newWidgets);
         user.cities = newWidgets;
         updateWidgets(user);

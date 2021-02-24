@@ -4,33 +4,23 @@
 		"password": "12",
 		"cities": [
 			{
-				"id": 2511020,
-				"name": "s'Arracó",
+				"id": 625144,
+				"name": "Minsk",
 				"state": "",
-				"country": "ES",
+				"country": "BY",
 				"coord": {
-					"lon": 2.39266,
-					"lat": 39.578171
+					"lon": 27.566668,
+					"lat": 53.900002
 				}
 			},
 			{
-				"id": 6354985,
-				"name": "güngören merter",
+				"id": 2643743,
+				"name": "London",
 				"state": "",
-				"country": "TR",
+				"country": "GB",
 				"coord": {
-					"lon": 28.887951,
-					"lat": 41.007111
-				}
-			},
-			{
-				"id": 7303136,
-				"name": "kagoshima",
-				"state": "",
-				"country": "JP",
-				"coord": {
-					"lon": 130.556717,
-					"lat": 31.595791
+					"lon": -0.12574,
+					"lat": 51.50853
 				}
 			}
 		],
