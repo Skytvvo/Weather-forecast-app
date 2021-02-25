@@ -1,9 +1,6 @@
 import React, {useState, useEffect} from "react";
 import "./index.css";
-import LeftBarImage from "../../images/interface/menu-4.svg";
-import DarkThemeImage from "../../images/interface/sun.svg";
-import ExitImage from "../../images/interface/exit.svg";
-import AddWidget from "../../images/interface/add.svg";
+import "./dark.css";
 
 const MenuBar=({theme, onChangePanel, username, onChangeTheme}) =>
 {

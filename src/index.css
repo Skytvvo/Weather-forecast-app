@@ -13,3 +13,7 @@
   display: flex;
   flex-wrap: wrap;
 }
+.window.dark
+{
+  background: #373737;
+}

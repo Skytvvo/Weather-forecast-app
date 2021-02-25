@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import "./index.css";
+import "./dark.css"
 import Error from "../../images/interface/warning.svg";
 
-const Panel = ({onChangePanel, onAdd}) =>{
+const Panel = ({onChangePanel, onAdd, theme}) =>{
 
     const [errorState,setErrorState] = useState(false);
     const [suggest, setSuggest] = useState([])
@@ -37,9 +38,9 @@ const Panel = ({onChangePanel, onAdd}) =>{
             <div onClick={()=>onChangePanel(false)} className="close_panel">
 
             </div>
-            <div className="panel_content">
+            <div className={"panel_content"+theme}>
                     <input onChange={(input)=>suggestRequest(input.target.value)}
-                           className="panel_input"
+                           className={"panel_input" +theme}
                            type="text"/>
 
                     <div className="panel_error">

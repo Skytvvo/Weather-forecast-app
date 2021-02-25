@@ -9,7 +9,6 @@ function App() {
     const [panel,setPanel] =  useState(false)
     const [theme,setTheme] = useState("")
     const [user,setUser] = useState(null);
-    const [refresh,setRefresh] = useState(null)
 
     const onAddWidget = (widget) =>{
         const newWidgets = [
@@ -50,14 +49,21 @@ function App() {
     }
 
     const changeTheme= () => {
+        const updatedUser = user;
         if(theme.length === 0)
-            setTheme(" dark")
-        else
-            setTheme("")
+        {
+            updatedUser.theme = " dark";
+        }
+        else {
+            updatedUser.theme = "";
+        }
+        setTheme(updatedUser.theme);
+        setUser(updatedUser);
+        updateWidgets(updatedUser);
     }
 
   return (
-      <div className="window">
+      <div className={"window" + theme}>
 
           {!user?
               (<Auth onSetUser={onSetUser} />)
@@ -77,6 +83,7 @@ function App() {
               theme={theme}
           />:""}
           {panel&&user?<Panel
+              theme={theme}
               onAdd={onAddWidget}
               onChangePanel={onChangeAddAnItem}
           />:""}

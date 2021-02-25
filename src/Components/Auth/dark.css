@@ -1,0 +1,15 @@
+.auth.dark
+{
+    background: #373737;
+    color: #ffffff;
+}
+.auth_panel.dark
+{
+    background: #252525;
+}
+
+.auth_user.dark input
+{
+    background: #373737;
+    color: #ffffff;
+}

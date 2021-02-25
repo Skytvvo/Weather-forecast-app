@@ -1,0 +1,28 @@
+.Widget.dark
+{
+    background: #252525;
+    color: #ffffff;
+}
+.refresh_widget.dark
+{
+    border-color: #ffffff;
+    background: #252525;
+    fill: #ffffff;
+}
+.refresh_widget.dark:hover
+{
+    border-color: #bfb520;
+    fill: #bfb520;
+    background: #373737;
+}
+
+.delete_widget.dark
+{
+    fill: #ffffff;
+    background: #252525;
+}
+.delete_widget.dark:hover
+{
+    fill: #CD0D00;
+    background: #373737;
+}

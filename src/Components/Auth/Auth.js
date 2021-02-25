@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react";
 import "./index.css";
-
+import "./dark.css";
 
 export default ({onSetUser}) => {
 
@@ -8,6 +8,7 @@ export default ({onSetUser}) => {
     const [typeAuth, setTypeAuth] = useState(false);
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
+    const [theme, setTheme] = useState("");
 
     const logToApp = (log = login,pass=password) =>{
 
@@ -60,22 +61,24 @@ export default ({onSetUser}) => {
     }
 
     useEffect(()=>{
+        let hours = new Date().getHours();
+        if(hours >= 21 || hours <= 6)
+            setTheme(" dark")
 
         if(localStorage.getItem("user")!==null)
         {
             let user = JSON.parse(localStorage.getItem("user"));
             logToApp(user.login,user.password)
         }
-
     },[])
 
     return(
-        <div className={"auth"}>
-            <div className={"auth_panel"}>
+        <div className={"auth" + theme}>
+            <div className={"auth_panel" + theme}>
                 <div className="auth_message">
                     Welcome
                 </div>
-                <div className="auth_user">
+                <div className={"auth_user" + theme}>
                     <input
                         onChange={(value)=>setLogin(value.target.value)}
                         type="text"
@@ -83,8 +86,10 @@ export default ({onSetUser}) => {
                     />
                     <input
                         onChange={(value)=>setPassword(value.target.value)}
-                        type="text"
-                        placeholder={"Password"}/>
+                        type="password"
+                        placeholder={"Password"}
+
+                    />
                     {typeAuth?
                         <button onClick={()=>regToApp()}>Sing up</button>
                         :

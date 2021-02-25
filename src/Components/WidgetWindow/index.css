@@ -1,4 +1,4 @@
-#WidgetWindow
+.WidgetWindow
 {
     padding: 2%;
     width: 100%;
@@ -168,6 +168,7 @@
 {
     box-shadow: 0 0 10px 0 #CD0D00;
     background: #CD0D00;
+    fill:#ffffff;
 }
 
 .refresh_widget

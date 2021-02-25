@@ -42,15 +42,11 @@
     border: none;
     border-radius: inherit;
     font-weight: bold;
+    width: 90%;
+    box-shadow: 0 0 2px 0 #373737;
 }
 
-.panel_input
-{
-    width: 90%;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom: 1px solid gray;
-}
+
 .panel_error
 {
     width: 10%;

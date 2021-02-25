@@ -1,0 +1,27 @@
+.Bar_Top.dark
+{
+    background: #252525;
+    color: #ffffff;
+}
+.Bar_Top_Btn_Interface.dark button
+{
+    border-color: #ffffff;
+}
+.Bar_Top_Btn_Interface.dark button:hover
+{
+    box-shadow: 0 0 5px 0 #373737;
+    border: 2px solid #373737;
+}
+.Bar_Top_Btn_Interface.dark button svg
+{
+    fill: #ffffff;
+}
+.Bar_Top_Btn_Interface.dark button:hover svg
+{
+    fill: #373737;
+}
+.Bar_Top_Btn.dark
+{
+    background: linear-gradient(41deg, rgba(66,24,56,1) 42%, rgba(39,83,92,1) 100%);
+}
+
