@@ -14,17 +14,27 @@
 				}
 			},
 			{
-				"id": 623549,
-				"name": "Pinsk",
+				"id": 2643743,
+				"name": "London",
+				"state": "",
+				"country": "GB",
+				"coord": {
+					"lon": -0.12574,
+					"lat": 51.50853
+				}
+			},
+			{
+				"id": 625144,
+				"name": "Minsk",
 				"state": "",
 				"country": "BY",
 				"coord": {
-					"lon": 26.0951,
-					"lat": 52.122898
+					"lon": 27.566668,
+					"lat": 53.900002
 				}
 			}
 		],
-		"theme": ""
+		"theme": " dark"
 	},
 	{
 		"login": "User",

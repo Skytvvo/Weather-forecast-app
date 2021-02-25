@@ -2,9 +2,7 @@ import React, {useEffect, useState} from "react";
 import Humidity from "../../../images/weather/004-humidity.svg";
 import Speed from "../../../images/weather/003-windsock.svg";
 import Temperature from  "../../../images/weather/celsius.svg";
-import Delete from "../../../images/interface/error.svg";
-import Refresh from "../../../images/interface/repeat.svg";
-import Preload from "../../../images/interface/preloader.svg";
+
 import "../index.css";
 import "../dark.css";
 
@@ -180,7 +178,20 @@ const Widget = ({theme, data, onDelete}) => {
             :""}
             {loading?
                 <div className={"preloader"}>
-                    <img src={Preload} alt="preload"/>
+                    <svg xmlns="http://www.w3.org/2000/svg"  width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                        <rect x="17.5" y="30" width="15" height="40" fill="#e4d8eb">
+                            <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="18;30;30" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.2s"></animate>
+                            <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="64;40;40" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.2s"></animate>
+                        </rect>
+                        <rect x="42.5" y="30" width="15" height="40" fill="#caacd4">
+                            <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="20.999999999999996;30;30" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.1s"></animate>
+                            <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="58.00000000000001;40;40" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.1s"></animate>
+                        </rect>
+                        <rect x="67.5" y="30" width="15" height="40" fill="#b06cc5">
+                            <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="20.999999999999996;30;30" keySplines="0 0.5 0.5 1;0 0.5 0.5 1"></animate>
+                            <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="58.00000000000001;40;40" keySplines="0 0.5 0.5 1;0 0.5 0.5 1"></animate>
+                        </rect>
+                        </svg>
                     <span>{apiLimit?"Server has reached api limit":"Loading..."}</span>
                     <span>Please, wait some seconds...</span>
                 </div>

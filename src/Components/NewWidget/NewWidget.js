@@ -50,13 +50,13 @@ const Panel = ({onChangePanel, onAdd, theme}) =>{
 
                     <div className={"suggest_container"}>
                         {suggest.length!==0?(
-                            <div className="suggest_response">
+                            <div className={"suggest_response"+theme}>
                                 {
                                     suggest.map((item,key) =>{
                                         return  <span
                                                 key={key}
                                                 onClick={()=>selectSuggest(item)}
-                                                className="suggest_item">
+                                                className={"suggest_item" + theme}>
                                                     {`${item.name} (${item.country})`}
                                                 </span>
                                     })

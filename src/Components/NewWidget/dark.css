@@ -8,4 +8,16 @@
     background: #373737;
     color: #ffffff;
 }
-
+.suggest_response.dark
+{
+    background: #252525;
+}
+.suggest_item.dark
+{
+    background: #252525;
+    color: #ffffff;
+}
+.suggest_item.dark:hover
+{
+    background: #373737;
+}

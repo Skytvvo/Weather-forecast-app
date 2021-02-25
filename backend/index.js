@@ -43,7 +43,7 @@ app.get("/", (req,res)=>{
 app.post("/forecast",cors(),(req,res)=>{
         request(new OptionsTemplateAPI(req.body.name, req.body.country, req.body.lat,req.body.lon),
             (error, response, body)=>{
-            if(response.statusCode===429)
+            if(response && response.statusCode===429)
             {
                 res.status(429)
                 res.json("API limit")
@@ -157,7 +157,7 @@ app.post("/city",  async (req,res)=>{
         .catch(err=>console.log(err))
 })
 
-app.put("/widgets/add",(req,res)=>{
+app.put("/users/update",(req,res)=>{
     new Promise((resolve, reject)=>{
         fs.readFile("users.json",(error, data)=>{
             if(error)
@@ -187,6 +187,7 @@ app.put("/widgets/add",(req,res)=>{
                 }
 
                 data[user].cities = req.body.cities;
+                data[user].theme = req.body.theme;
                 res.status(200);
                 res.send()
                 return data;

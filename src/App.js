@@ -11,6 +11,14 @@ function App() {
     const [user,setUser] = useState(null);
 
     const onAddWidget = (widget) =>{
+        if(widgets.length===9)
+        {
+            return;
+        }
+        if(widgets.filter(item => item.city === widget.city).length !== 0)
+        {
+            return;
+        }
         const newWidgets = [
             ...widgets,widget
         ];
@@ -19,7 +27,7 @@ function App() {
         updateWidgets(user)
     }
     const updateWidgets=(obj)=>{
-        fetch("http://localhost:9999/widgets/add",{
+        fetch("http://localhost:9999/users/update",{
             method:"PUT",
             headers:{
                 "Content-Type":"application/json;charset=utf-8"

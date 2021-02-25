@@ -195,7 +195,7 @@
     height: 100%;
     flex-wrap: wrap;
 }
-.preloader img
+.preloader svg
 {
     height: 50%;
 }
