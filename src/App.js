@@ -8,8 +8,8 @@ function App() {
     const [widgets,setWidgets] = useState([]);
     const [panel,setPanel] =  useState(false)
     const [theme,setTheme] = useState("")
-
     const [user,setUser] = useState(null);
+    const [refresh,setRefresh] = useState(null)
 
     const onAddWidget = (widget) =>{
         const newWidgets = [
@@ -45,11 +45,12 @@ function App() {
     }
 
 
-
     const onChangeAddAnItem = (expression) => {
         setPanel(expression)
     }
+    const changeTheme= () => {
 
+    }
 
   return (
       <div className="window">
@@ -62,16 +63,10 @@ function App() {
                 widgets={widgets}
                 theme={theme}
                 onChangePanel={onChangeAddAnItem}
+                username={user.login}
               />:
               ""}
 
-        {/*  {user?<UserControls
-              widgets={widgets}
-              onRefreshWidgets={onRefreshWidgets}
-              onSetHome={onSetHome}
-              theme={theme}
-              onChangePanel={onChangeAddAnItem}
-          />:""}*/}
           {user?<WidgetWindow
               onDelete={onDeleteWidget}
               widgets={widgets}

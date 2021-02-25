@@ -143,20 +143,23 @@
     width: 100%;
     font-weight: bold;
 }
-.delete_widget
+.delete_widget, .refresh_widget
 {
     cursor: pointer;
     visibility: hidden;
     width: 25px;
     position: absolute;
-    right: -10px;
-    top:-10px;
+
     transition:  0.5s;
     opacity: 0;
     border-radius: 50px;
 }
-
-.Widget:hover .delete_widget
+.delete_widget
+{
+    right: -10px;
+    top:-10px;
+}
+.Widget:hover .delete_widget,.Widget:hover .refresh_widget
 {
     visibility: visible;
     opacity: 1;
@@ -165,9 +168,17 @@
 {
     box-shadow: 0 0 10px 0 #CD0D00;
     background: #CD0D00;
-
-
-
-
 }
 
+.refresh_widget
+{
+    padding: 2px;
+    border: solid #000000 1px;
+    left: -10px;
+    top: -10px;
+}
+.refresh_widget:hover
+{
+    box-shadow: 0 0 10px 0 #bfb520;
+    background: #fff532;
+}

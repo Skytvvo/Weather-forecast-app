@@ -3,6 +3,7 @@ import Humidity from "../../../images/weather/004-humidity.svg";
 import Speed from "../../../images/weather/003-windsock.svg";
 import Temperature from  "../../../images/weather/celsius.svg";
 import Delete from "../../../images/interface/error.svg";
+import Refresh from "../../../images/interface/repeat.svg"
 import "../index.css";
 
 /*todo
@@ -12,7 +13,25 @@ const Widget = ({theme, data, onDelete}) => {
 
     const [forecast, setForecast] = useState(null)
     const [apiLimit, setApiLimit]=useState(false);
+    const [reqInterval,setReqInterval]=useState(null);
     useEffect(()=>{
+        makeRequest();
+    },[data])
+
+    useEffect(()=>{
+        if(apiLimit)
+        {
+            let reqIn = setInterval(()=>makeRequest(),60000);
+            setReqInterval(reqIn);
+        }
+        if(!apiLimit && reqInterval !== null)
+        {
+            clearInterval(reqInterval);
+            setReqInterval(null);
+        }
+    },[apiLimit])
+
+    const makeRequest = ()=>{
         fetch("http://localhost:9999/forecast",
             {
                 method:"POST",
@@ -35,8 +54,7 @@ const Widget = ({theme, data, onDelete}) => {
                 console.log(err);
                 setApiLimit(true);
             })
-    },[data])
-
+    }
 
     const GetWeekDay = (time) =>{
         switch (new Date(time * 1000).getDay())
@@ -156,7 +174,8 @@ const Widget = ({theme, data, onDelete}) => {
                             </div>
                 })):("")}
             </div>
-            <img src={Delete} onClick={()=>onDelete(forecast)} className={"delete_widget"} alt="delete_widget"/>
+            <img src={Refresh} onClick={()=>makeRequest()} className={"refresh_widget"} alt="refresh widget"/>
+            <img src={Delete} onClick={()=>onDelete(forecast)} className={"delete_widget"} alt="delete widget"/>
         </div>
     )
 }
