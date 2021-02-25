@@ -29,7 +29,7 @@
     border-radius: 5px;
     background: none;
     transition: 0.2s;
-    border: 1px solid #000000;
+    border: 2px solid #000000;
 }
 .Bar_Top_Btn
 {
@@ -76,4 +76,30 @@
     border-radius: 5px;
 
 }
+
+.Bar_Top.dark
+{
+    background: #111111;
+    color: #ffffff;
+}
+.Bar_Top_Btn_Interface.dark button
+{
+    border-color: #ffffff;
+}
+.Bar_Top_Btn_Interface.dark button:hover
+{
+    box-shadow: 0 0 5px 0 #373737;
+    border: 2px solid #373737;
+}
+.Bar_Top_Btn_Interface.dark button svg
+{
+    fill: #ffffff;
+}
+.Bar_Top_Btn_Interface.dark button:hover svg
+{
+    fill: #373737;
+}
+
+
+
 

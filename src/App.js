@@ -48,8 +48,12 @@ function App() {
     const onChangeAddAnItem = (expression) => {
         setPanel(expression)
     }
-    const changeTheme= () => {
 
+    const changeTheme= () => {
+        if(theme.length === 0)
+            setTheme(" dark")
+        else
+            setTheme("")
     }
 
   return (
@@ -60,10 +64,10 @@ function App() {
               :("")}
           {user?
               <TopBar
-                widgets={widgets}
                 theme={theme}
                 onChangePanel={onChangeAddAnItem}
                 username={user.login}
+                onChangeTheme={changeTheme}
               />:
               ""}
 

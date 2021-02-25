@@ -14,16 +14,28 @@
 				}
 			},
 			{
-				"id": 121110,
-				"name": "Piranshahr",
+				"id": 623549,
+				"name": "Pinsk",
 				"state": "",
-				"country": "IR",
+				"country": "BY",
 				"coord": {
-					"lon": 45.1413,
-					"lat": 36.701
+					"lon": 26.0951,
+					"lat": 52.122898
 				}
 			}
 		],
+		"theme": ""
+	},
+	{
+		"login": "User",
+		"password": "1111",
+		"cities": [],
+		"theme": ""
+	},
+	{
+		"login": "Denis",
+		"password": "1234",
+		"cities": [],
 		"theme": ""
 	}
 ]
