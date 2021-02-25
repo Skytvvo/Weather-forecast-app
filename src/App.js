@@ -11,14 +11,7 @@ function App() {
     const [user,setUser] = useState(null);
 
     const onAddWidget = (widget) =>{
-        if(widgets.length===9)
-        {
-            return;
-        }
-        if(widgets.filter(item => item.city === widget.city).length !== 0)
-        {
-            return;
-        }
+        onChangeAddAnItem(false);
         const newWidgets = [
             ...widgets,widget
         ];
@@ -26,6 +19,16 @@ function App() {
         user.cities = newWidgets;
         updateWidgets(user)
     }
+
+    const checkCity = (newCity) =>{
+        if(widgets.length===9)
+        {
+            return false;
+        }
+        return widgets.filter(item => (item.id === newCity.id)).length === 0;
+
+    }
+
     const updateWidgets=(obj)=>{
         fetch("http://localhost:9999/users/update",{
             method:"PUT",
@@ -38,7 +41,9 @@ function App() {
     }
 
     const onDeleteWidget = (widget)=>{
+        console.log(widget,widgets)
         const newWidgets = widgets.filter(item=>item.id!==widget.city.id)
+
         setWidgets(newWidgets);
         user.cities = newWidgets;
         updateWidgets(user);
@@ -91,6 +96,7 @@ function App() {
               theme={theme}
           />:""}
           {panel&&user?<Panel
+              onCheckCity={checkCity}
               theme={theme}
               onAdd={onAddWidget}
               onChangePanel={onChangeAddAnItem}

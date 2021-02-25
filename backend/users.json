@@ -4,33 +4,23 @@
 		"password": "12",
 		"cities": [
 			{
-				"id": 625144,
-				"name": "Minsk",
-				"state": "",
-				"country": "BY",
-				"coord": {
-					"lon": 27.566668,
-					"lat": 53.900002
-				}
-			},
-			{
-				"id": 2643743,
+				"id": 4119617,
 				"name": "London",
-				"state": "",
-				"country": "GB",
+				"state": "AR",
+				"country": "US",
 				"coord": {
-					"lon": -0.12574,
-					"lat": 51.50853
+					"lon": -93.25296,
+					"lat": 35.328972
 				}
 			},
 			{
-				"id": 625144,
-				"name": "Minsk",
-				"state": "",
-				"country": "BY",
+				"id": 4298960,
+				"name": "London",
+				"state": "KY",
+				"country": "US",
 				"coord": {
-					"lon": 27.566668,
-					"lat": 53.900002
+					"lon": -84.08326,
+					"lat": 37.128979
 				}
 			}
 		],

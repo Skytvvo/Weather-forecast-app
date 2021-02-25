@@ -3,11 +3,12 @@ import "./index.css";
 import "./dark.css"
 import Error from "../../images/interface/warning.svg";
 
-const Panel = ({onChangePanel, onAdd, theme}) =>{
+const Panel = ({onChangePanel, onAdd, theme, onCheckCity}) =>{
 
     const [errorState,setErrorState] = useState(false);
     const [suggest, setSuggest] = useState([])
     const suggestRequest = ( city ) =>{
+        setErrorState(false);
         if( city === "" )
         {
             setSuggest([]);
@@ -29,8 +30,12 @@ const Panel = ({onChangePanel, onAdd, theme}) =>{
 
     const selectSuggest=(selectedSuggest)=>{
         setSuggest([]);
-        onAdd(selectedSuggest);
-        onChangePanel(false);
+        if(onCheckCity(selectedSuggest))
+            onAdd(selectedSuggest);
+        else
+        {
+            setErrorState(true);
+        }
     }
 
     return(

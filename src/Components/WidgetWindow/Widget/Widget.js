@@ -35,6 +35,7 @@ const Widget = ({theme, data, onDelete}) => {
     },[apiLimit])
 
     const makeRequest = ()=>{
+
         fetch("http://localhost:9999/forecast",
             {
                 method:"POST",
