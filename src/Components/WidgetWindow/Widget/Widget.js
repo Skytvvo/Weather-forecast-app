@@ -4,6 +4,7 @@ import Speed from "../../../images/weather/003-windsock.svg";
 import Temperature from  "../../../images/weather/celsius.svg";
 import Delete from "../../../images/interface/error.svg";
 import Refresh from "../../../images/interface/repeat.svg"
+import Preload from "../../../images/interface/preloader.svg"
 import "../index.css";
 
 /*todo
@@ -13,15 +14,18 @@ const Widget = ({theme, data, onDelete}) => {
 
     const [forecast, setForecast] = useState(null)
     const [apiLimit, setApiLimit]=useState(false);
+    const [loading, setLoading] = useState(true);
     const [reqInterval,setReqInterval]=useState(null);
     useEffect(()=>{
         makeRequest();
+        setLoading(true);
     },[data])
 
     useEffect(()=>{
         if(apiLimit)
         {
-            let reqIn = setInterval(()=>makeRequest(),60000);
+            let reqIn = setInterval(()=>makeRequest(),10000);
+            setLoading(true)
             setReqInterval(reqIn);
         }
         if(!apiLimit && reqInterval !== null)
@@ -49,6 +53,7 @@ const Widget = ({theme, data, onDelete}) => {
             .then(response=> {
                 setForecast(response);
                 setApiLimit(false);
+                setLoading(false);
             })
             .catch(err=>{
                 console.log(err);
@@ -94,27 +99,6 @@ const Widget = ({theme, data, onDelete}) => {
         }
     }
 
-    const GetMonthDay = (time) =>{
-        let date = new Date(time*1000);
-        let day  = `${date.getDate()}th `;
-        switch (date.getMonth())
-        {
-            case 0: day+="January"; break;
-            case 1: day+="February"; break;
-            case 2: day+="March"; break;
-            case 3: day+="April"; break;
-            case 4: day+="May"; break;
-            case 5: day+="June"; break;
-            case 6: day+="July"; break;
-            case 7: day+="August"; break;
-            case 8: day+="September"; break;
-            case 9: day+="October"; break;
-            case 10: day+="November"; break;
-            case 11: day+="December"; break;
-        }
-        return day;
-    }
-
     const GetDescription = (str) =>
     {
         if(str === "" || str === null)
@@ -125,58 +109,66 @@ const Widget = ({theme, data, onDelete}) => {
 
     return(
         <div className={"Widget" + theme}>
-            <div className={"Today"}>
-                <div className="day">
-                    <div className={"day_png"}>
-                        {
-                            (forecast)?
-                                <img
-                                    src={`http://openweathermap.org/img/wn/${forecast.list[0].weather[0].icon}.png`
-                        } alt={`${forecast?forecast.list[0].weather[0].description:""}`}/>:""}
-                        <p>{forecast?(GetDescription(forecast.list[0].weather[0].description)):""}</p>
-                        <p>
-                            { forecast?(GetWeekDay(forecast.list[0].dt)):("")}
-                            {forecast?(`, ${forecast.city.name} `):("")}
-                        </p>
+            {!loading?<div className={"Today"}>
+            <div className="day">
+                <div className={"day_png"}>
+                    {
+                        (forecast) ?
+                            <img
+                                src={`http://openweathermap.org/img/wn/${forecast.list[0].weather[0].icon}.png`
+                                } alt={`${forecast ? forecast.list[0].weather[0].description : ""}`}/> : ""}
+                    <p>{forecast ? (GetDescription(forecast.list[0].weather[0].description)) : ""}</p>
+                    <p>
+                        {forecast ? (GetWeekDay(forecast.list[0].dt)) : ("")}
+                        {forecast ? (`, ${forecast.city.name} `) : ("")}
+                    </p>
+                </div>
+                <div className="forecast_day">
+                    <div className="day_props">
+                        <img src={Temperature} alt="Temperature"/>
+                        <span>{forecast ? (`min:${forecast.list[0].temp.min}\nmax:${forecast.list[0].temp.max}`) :
+                            ("")}</span>
                     </div>
-                    <div className="forecast_day">
-                        <div className="day_props">
-                            <img src={Temperature} alt="Temperature"/>
-                            <span>{forecast?(`min:${forecast.list[0].temp.min }\nmax:${forecast.list[0].temp.max }`):
-                                ("")}</span>
-                        </div>
-                        <div className="day_props">
-                            <img src={Humidity} alt="Humidity"/>
-                            <span>{forecast?(`${forecast.list[0].humidity}%`):("")}</span>
-                        </div>
-                        <div className="day_props">
-                            <img src={Speed} alt="Wind_speed"/>
-                            <span>{forecast?(`${forecast.list[0].speed} km/h`):("")}</span>
-                        </div>
+                    <div className="day_props">
+                        <img src={Humidity} alt="Humidity"/>
+                        <span>{forecast ? (`${forecast.list[0].humidity}%`) : ("")}</span>
+                    </div>
+                    <div className="day_props">
+                        <img src={Speed} alt="Wind_speed"/>
+                        <span>{forecast ? (`${forecast.list[0].speed} km/h`) : ("")}</span>
                     </div>
                 </div>
+            </div>
 
-            </div>
-            <div className={"Week"}>
-                {forecast?(forecast.list.map((item,key)=>{
-                    if(key===0)
-                        return ;
+        </div>:""}
+            {!loading? <div className={"Week"}>
+                {forecast ? (forecast.list.map((item, key) => {
+                    if (key === 0)
+                        return;
                     return <div key={key} className={"Week_props"}>
-                                <div className="props_img">
-                                    <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`} alt=""/>
-                                </div>
-                                <div className="props_temperature">
-                                    <span>{item.temp.day}{'\u00b0'}</span>
-                                </div>
-                                <div className="props_weekday">
-                                    <span>{GetWeekDay(item.dt)}</span>
-                                </div>
-                            </div>
-                })):("")}
-            </div>
-            <img src={Refresh} onClick={()=>makeRequest()} className={"refresh_widget"} alt="refresh widget"/>
-            <img src={Delete} onClick={()=>onDelete(forecast)} className={"delete_widget"} alt="delete widget"/>
-        </div>
+                        <div className="props_img">
+                            <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`} alt=""/>
+                        </div>
+                        <div className="props_temperature">
+                            <span>{item.temp.day}{'\u00b0'}</span>
+                        </div>
+                        <div className="props_weekday">
+                            <span>{GetWeekDay(item.dt)}</span>
+                        </div>
+                    </div>
+                })) : ("")}
+            </div>:""}
+            <img src={Refresh} onClick={() => makeRequest()} className={"refresh_widget"} alt="refresh widget"/>
+            {!loading?<img src={Delete} onClick={() => onDelete(forecast)} className={"delete_widget"} alt="delete widget"/>:""}
+            {loading?
+                <div className={"preloader"}>
+                    <img src={Preload} alt="preload"/>
+                    <span>{apiLimit?"Server has reached api limit":"Loading..."}</span>
+                    <span>Please, wait some seconds...</span>
+                </div>
+                :""}
+
+    </div>
     )
 }
 
