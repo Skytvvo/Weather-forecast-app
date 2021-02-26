@@ -103,4 +103,8 @@
     opacity: 0.5;
 }
 
-
+.auth_user .err
+{
+    color: #CD0D00;
+    box-shadow: 0 0 10px 0 #CD0D00;
+}

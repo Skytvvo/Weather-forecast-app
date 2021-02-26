@@ -3,7 +3,6 @@ const app = express();
 const fs = require("fs");
 const request = require('request');
 const cors = require('cors');
-const path = require("path");
 app.use(express.json());
 
 function OptionsTemplateAPI(Name, Country, lat, lon)

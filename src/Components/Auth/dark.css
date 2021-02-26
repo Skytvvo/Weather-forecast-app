@@ -13,3 +13,7 @@
     background: #373737;
     color: #ffffff;
 }
+.auth_user.dark .err
+{
+    color: #CD0D00;
+}

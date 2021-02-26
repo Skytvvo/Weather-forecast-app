@@ -9,6 +9,13 @@ export default ({onSetUser}) => {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const [theme, setTheme] = useState("");
+    const [passwordError,setPasswordError] = useState(false);
+    const [loginError,setLoginError] = useState(false);
+
+    useEffect(()=>{
+        setLoginError("");
+        setPasswordError("");
+    },[login,password])
 
     const logToApp = (log = login,pass=password) =>{
 
@@ -25,11 +32,13 @@ export default ({onSetUser}) => {
             .then(data=>{
                 if(data.status === 404)
                 {
-                    throw new Error("404")
+                    setLoginError("err");
+                    throw new Error("This user don't exist")
                 }
                 if(data.status === 403)
                 {
-                    throw new Error("403")
+                    setPasswordError("err")
+                    throw new Error("Incorrect password")
                 }
                 return data;
             })
@@ -80,16 +89,18 @@ export default ({onSetUser}) => {
                 </div>
                 <div className={"auth_user" + theme}>
                     <input
+                        className={loginError}
                         onChange={(value)=>setLogin(value.target.value)}
                         type="text"
                         placeholder={"Login"}
                     />
                     <input
+                        className={passwordError + loginError}
                         onChange={(value)=>setPassword(value.target.value)}
                         type="password"
                         placeholder={"Password"}
-
                     />
+
                     {typeAuth?
                         <button onClick={()=>regToApp()}>Sing up</button>
                         :
