@@ -120,13 +120,13 @@ const Widget = ({theme, data, onDelete}) => {
                     <p>{forecast ? (GetDescription(forecast.list[0].weather[0].description)) : ""}</p>
                     <p>
                         {forecast ? (GetWeekDay(forecast.list[0].dt)) : ("")}
-                        {forecast ? (`, ${forecast.city.name} `) : ("")}
+                        {forecast ? (`, ${forecast.city.name}(${forecast.city.country}) `) : ("")}
                     </p>
                 </div>
                 <div className="forecast_day">
                     <div className="day_props">
                         <img src={Temperature} alt="Temperature"/>
-                        <span>{forecast ? (`min:${forecast.list[0].temp.min}\nmax:${forecast.list[0].temp.max}`) :
+                        <span>{forecast ? (`${forecast.list[0].temp.min}${'\u00b0'}/${forecast.list[0].temp.max}${'\u00b0'}`) :
                             ("")}</span>
                     </div>
                     <div className="day_props">

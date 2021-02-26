@@ -12,6 +12,26 @@
 					"lon": 27.566668,
 					"lat": 53.900002
 				}
+			},
+			{
+				"id": 11263,
+				"name": "Shahrīār Kandeh",
+				"state": "",
+				"country": "IR",
+				"coord": {
+					"lon": 53.19902,
+					"lat": 36.631939
+				}
+			},
+			{
+				"id": 148724,
+				"name": "Zanzibar Urban/West Region",
+				"state": "",
+				"country": "TZ",
+				"coord": {
+					"lon": 39.25,
+					"lat": -6.16667
+				}
 			}
 		],
 		"theme": " dark"
@@ -25,8 +45,19 @@
 	{
 		"login": "Denis",
 		"password": "1234",
-		"cities": [],
-		"theme": ""
+		"cities": [
+			{
+				"id": 620181,
+				"name": "Vilyeyka",
+				"state": "",
+				"country": "BY",
+				"coord": {
+					"lon": 26.90624,
+					"lat": 54.489601
+				}
+			}
+		],
+		"theme": " dark"
 	},
 	{
 		"login": "user145",

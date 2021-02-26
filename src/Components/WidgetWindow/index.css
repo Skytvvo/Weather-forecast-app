@@ -46,23 +46,38 @@
 
 .day_png
 {
+
     display: flex;
     width: 100%;
     height: 40%;
     justify-content: space-between;
+
+}
+.day_png img
+{
+    max-width: 10%;
+
 }
 .day_png p
 {
     padding: 10px;
     height: 100%;
-    font-size: x-large;
+    font-size: 1vw;
     font-weight: bold;
     text-align: right;
 
 }
+.day_png p:first-child
+{
+    max-width: 35%;
+}
+.day_png p:last-child
+{
+    max-width: 55%;
+}
 .day img
 {
-    height: 100%;
+
     align-self: center;
     justify-self: center;
 }
