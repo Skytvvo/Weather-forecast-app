@@ -69,9 +69,12 @@
     justify-content: center;
     align-items: center;
 }
-.panel_error img
+.panel_error svg
 {
     width: 50%;
+    fill: #CD0D00;
+    border-radius: 50px;
+    box-shadow: 0 0 5px 0 #CD0D00;
 }
 
 .close_panel:hover + .panel_content

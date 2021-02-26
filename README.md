@@ -2,6 +2,8 @@
 
 ##!!!App use **npm** package manager!!!
 
+## Preview: https://weather--forecast--app.herokuapp.com/
+
 ##Installation and start:
 1. Install node modules
    * Go to main folder

@@ -2,7 +2,18 @@
 	{
 		"login": "sky",
 		"password": "12",
-		"cities": [],
+		"cities": [
+			{
+				"id": 625144,
+				"name": "Minsk",
+				"state": "",
+				"country": "BY",
+				"coord": {
+					"lon": 27.566668,
+					"lat": 53.900002
+				}
+			}
+		],
 		"theme": ""
 	},
 	{
@@ -13,6 +24,18 @@
 	},
 	{
 		"login": "Denis",
+		"password": "1234",
+		"cities": [],
+		"theme": ""
+	},
+	{
+		"login": "user145",
+		"password": "11",
+		"cities": [],
+		"theme": ""
+	},
+	{
+		"login": "userVit",
 		"password": "1234",
 		"cities": [],
 		"theme": ""
