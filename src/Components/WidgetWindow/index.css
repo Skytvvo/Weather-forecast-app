@@ -219,3 +219,17 @@
     font-weight: bold;
 
 }
+.Widget.Add
+{
+    justify-content: center;
+    align-items: center;
+}
+.add_btn
+{
+    transition: inherit;
+    height: 25%;
+}
+.Widget.Add:hover .add_btn
+{
+    fill: #a9a9a9;
+}

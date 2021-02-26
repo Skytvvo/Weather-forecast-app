@@ -1,22 +1,18 @@
 #Weather forecast app
 
 ##!!!App use **npm** package manager!!!
-
-## Preview: https://weather--forecast--app.herokuapp.com/
-
+##Use node.js supported terminal
 ##Installation and start:
 1. Install node modules
-   * Go to main folder
-    * Write to console "npm install"
-2. Run front-end part
-   * Go to main folder
-    * Write to console "npm start **3000**" 
-    
-3. Run back-end **(working on 9999 port)**
-    * Go to folder "backend"
-    * Write to console "node server.js" or "nodemon server.js"
-    
-4. Launch browser and go to "http://localhost:3000/"
+    * Write to terminal "npm install"
+  
+2. Run back-end **(working on 9999 port)**
+    * Write to terminal "node server.js" or "nodemon server.js"
+   
+3. Run front-end part
+   * Write to terminal "npm start **3000**"
+   * **Wait** until the application page opens **or** open it by **http://localhost:3000/**
+
 
 ##At the moment app hasn't database
 ##App use file system for saving and reading data

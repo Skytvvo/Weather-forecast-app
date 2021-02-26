@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import "./index.css";
 import "./dark.css";
 
-const MenuBar=({theme, onChangePanel, username, onChangeTheme}) =>
+const MenuBar=({theme, username, onChangeTheme}) =>
 {
     const [getTime,setTime] = useState("");
 
@@ -87,13 +87,7 @@ const MenuBar=({theme, onChangePanel, username, onChangeTheme}) =>
             </span>
 
             <div className={"Bar_Top_Btn_Interface" + theme}>
-                <button onClick={()=>onChangePanel(true)}>
 
-                    <svg xmlns="http://www.w3.org/2000/svg" height={25} viewBox="0 0 42 42" >
-                        <polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "/>
-                    </svg>
-
-                </button>
 
                 <button onClick={()=>onChangeTheme()}>
                     <svg version="1.1"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" height={25}>

@@ -11,7 +11,7 @@ function App() {
     const [user,setUser] = useState(null);
 
     const onAddWidget = (widget) =>{
-        onChangeAddAnItem(false);
+        onChangePanel(false);
         const newWidgets = [
             ...widgets,widget
         ];
@@ -58,7 +58,7 @@ function App() {
     }
 
 
-    const onChangeAddAnItem = (expression) => {
+    const onChangePanel = (expression) => {
         setPanel(expression)
     }
 
@@ -85,22 +85,24 @@ function App() {
           {user?
               <TopBar
                 theme={theme}
-                onChangePanel={onChangeAddAnItem}
                 username={user.login}
                 onChangeTheme={changeTheme}
               />:
               ""}
 
-          {user?<WidgetWindow
-              onDelete={onDeleteWidget}
-              widgets={widgets}
-              theme={theme}
-          />:""}
+          {user?
+              <WidgetWindow
+                  onChangePanel={onChangePanel}
+                  onDelete={onDeleteWidget}
+                  widgets={widgets}
+                  theme={theme}
+            />
+          :""}
           {panel&&user?<Panel
               onCheckCity={checkCity}
               theme={theme}
               onAdd={onAddWidget}
-              onChangePanel={onChangeAddAnItem}
+              onChangePanel={onChangePanel}
           />:""}
 
 
