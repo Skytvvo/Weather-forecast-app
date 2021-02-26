@@ -2,28 +2,7 @@
 	{
 		"login": "sky",
 		"password": "12",
-		"cities": [
-			{
-				"id": 4119617,
-				"name": "London",
-				"state": "AR",
-				"country": "US",
-				"coord": {
-					"lon": -93.25296,
-					"lat": 35.328972
-				}
-			},
-			{
-				"id": 4298960,
-				"name": "London",
-				"state": "KY",
-				"country": "US",
-				"coord": {
-					"lon": -84.08326,
-					"lat": 37.128979
-				}
-			}
-		],
+		"cities": [],
 		"theme": " dark"
 	},
 	{

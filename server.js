@@ -3,8 +3,7 @@ const app = express();
 const fs = require("fs");
 const request = require('request');
 const cors = require('cors');
-
-
+const path = require("path");
 app.use(express.json());
 
 function OptionsTemplateAPI(Name, Country, lat, lon)
@@ -27,7 +26,7 @@ function OptionsTemplateAPI(Name, Country, lat, lon)
 
 
 
-const PORT = 9999;
+const PORT = process.env.PORT || 9999;
 
 //Handled options request, allowed all origins
 app.options("*",cors());
@@ -58,7 +57,7 @@ app.post("/forecast",cors(),(req,res)=>{
 
 app.post("/login",(req,res)=>{
     new Promise((resolve,reject) => {
-        fs.readFile("users.json",(error,data)=>
+        fs.readFile(__dirname+"/backend/users.json",(error,data)=>
         {
             if(error)
                 reject(error);
@@ -98,7 +97,7 @@ app.post("/login",(req,res)=>{
 
 app.post("/reg", (req,res)=> {
         new Promise((resolve,reject)=>{
-        fs.readFile("users.json", (error, data) => {
+        fs.readFile(__dirname+"/backend/users.json", (error, data) => {
             if (error)
                 reject(error)
                 resolve(data)
@@ -121,7 +120,7 @@ app.post("/reg", (req,res)=> {
                 let updatedData = [...data,newUser];
                 res.status(200);
                 res.json(newUser);
-                fs.writeFile("users.json",JSON.stringify(updatedData, null, '\t'), (err)=>{
+                fs.writeFile(__dirname+"/backend/users.json",JSON.stringify(updatedData, null, '\t'), (err)=>{
                     console.log(err)
                 });
             }
@@ -137,7 +136,7 @@ app.post("/reg", (req,res)=> {
 
 app.post("/city",  async (req,res)=>{
     new Promise((resolve,reject) => {
-          fs.readFile("city.list.json","utf8", (error,data)=>{
+          fs.readFile(__dirname+"/backend/city.list.json","utf8", (error,data)=>{
             if(error)
                 reject(error)
             resolve(data);
@@ -159,7 +158,7 @@ app.post("/city",  async (req,res)=>{
 
 app.put("/users/update",(req,res)=>{
     new Promise((resolve, reject)=>{
-        fs.readFile("users.json",(error, data)=>{
+        fs.readFile(__dirname+"/backend/users.json",(error, data)=>{
             if(error)
                 reject(error);
             resolve(data);
@@ -196,7 +195,7 @@ app.put("/users/update",(req,res)=>{
 
         })
         .then(data=>{
-            fs.writeFile("users.json", JSON.stringify(data, null, '\t'),(err)=>{
+            fs.writeFile(__dirname+"/backend/users.json", JSON.stringify(data, null, '\t'),(err)=>{
                 if(err)
                     throw err;
             })

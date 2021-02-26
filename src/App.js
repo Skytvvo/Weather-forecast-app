@@ -40,10 +40,11 @@ function App() {
             .catch(err=>console.log(err))
     }
 
-    const onDeleteWidget = (widget)=>{
-        console.log(widget,widgets)
-        const newWidgets = widgets.filter(item=>item.id!==widget.city.id)
 
+
+    const onDeleteWidget = (widget)=>{
+        //bug with London(US) and London(US) with different states (API problem)
+       const newWidgets = widgets.filter(item=>(item.id!==widget.city.id && widget.city.id !== 4517009))
         setWidgets(newWidgets);
         user.cities = newWidgets;
         updateWidgets(user);

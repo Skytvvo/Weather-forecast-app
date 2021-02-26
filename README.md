@@ -12,7 +12,7 @@
     
 3. Run back-end **(working on 9999 port)**
     * Go to folder "backend"
-    * Write to console "node index.js" or "nodemon index.js"
+    * Write to console "node server.js" or "nodemon server.js"
     
 4. Launch browser and go to "http://localhost:3000/"
 
