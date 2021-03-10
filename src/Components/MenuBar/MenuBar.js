@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import "./index.css";
 import "./dark.css";
-
+import "./responsive.css";
 const MenuBar=({theme, username, onChangeTheme}) =>
 {
     const [getTime,setTime] = useState("");
@@ -78,7 +78,7 @@ const MenuBar=({theme, username, onChangeTheme}) =>
         <div className={"Bar_Top" + theme}>
 
             <button className={"Bar_Top_Btn" + theme}>
-                {username}
+                {username.length > 6?username.slice(0,7) + "..." : username}
             </button>
 
 

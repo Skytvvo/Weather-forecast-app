@@ -12,10 +12,6 @@
     border-radius:0 0 5px 5px;
 }
 
-
-
-
-
 /*General styles*/
 .Bar_Top_Btn, .Bar_Top_Btn_Interface button
 {
@@ -41,10 +37,12 @@
     background: linear-gradient(41deg, rgba(121, 9, 94, 0.7150210425967262) 42%, rgba(0, 212, 255, 1) 100%);
     color: #ffffff;
     border: none;
+    width: 20%;
+    height: 100%;
 }
 
 
-.Bar_Top_Btn_Interface button img
+.Bar_Top_Btn_Interface button svg
 {
 
     height: 100%;

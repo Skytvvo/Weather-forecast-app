@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import "./index.css";
-import "./dark.css"
-import Error from "../../images/interface/warning.svg";
-
+import "./dark.css";
+import "./responsive.css";
 const Panel = ({onChangePanel, onAdd, theme, onCheckCity}) =>{
 
     const [errorState,setErrorState] = useState(false);

@@ -3,6 +3,10 @@
     background: #252525;
     color: #ffffff;
 }
+.WidgetWindow.dark
+{
+    background: #373737;
+}
 .refresh_widget.dark
 {
     border-color: #ffffff;

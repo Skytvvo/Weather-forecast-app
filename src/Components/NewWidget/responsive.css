@@ -1,0 +1,15 @@
+@media only screen and (max-width: 600px)
+{
+    .panel_content
+    {
+        width: 95%;
+    }
+    .panel_input
+    {
+        font-size: 16px;
+    }
+    .suggest_item
+    {
+        font-size: 14px;
+    }
+}

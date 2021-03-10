@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from "react";
 import "./index.css";
 import "./dark.css";
+import "./responsive.css";
 
 export default ({onSetUser}) => {
 
@@ -9,8 +10,8 @@ export default ({onSetUser}) => {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const [theme, setTheme] = useState("");
-    const [passwordError,setPasswordError] = useState(false);
-    const [loginError,setLoginError] = useState(false);
+    const [passwordError,setPasswordError] = useState("");
+    const [loginError,setLoginError] = useState("");
 
     useEffect(()=>{
         setLoginError("");

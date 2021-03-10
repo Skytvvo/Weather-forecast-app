@@ -5,6 +5,7 @@ import Temperature from  "../../../images/weather/celsius.svg";
 
 import "../index.css";
 import "../dark.css";
+import "../responsive.css";
 
 /*todo
 * fix bugs for connections interrupts

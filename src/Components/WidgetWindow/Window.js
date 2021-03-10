@@ -1,7 +1,9 @@
 import React,{useState,useEffect} from "react";
 import Widget from "./Widget/Widget";
 import "./index.css";
-import "./dark.css"
+import "./dark.css";
+import "./responsive.css";
+
 function WidgetWindow({widgets, theme, onDelete, onChangePanel})
 {
 

@@ -1,0 +1,12 @@
+@media only screen and (max-width: 600px)
+{
+    .auth_panel
+    {
+        width: 90%;
+        height: 45%;
+    }
+    .auth_user input
+    {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,22 @@
+@media only screen and (max-width: 600px)
+{
+    .Bar_Top_Date
+    {
+        font-size: 14px;
+    }
+    .Bar_Top_Btn
+    {
+        font-size: 10px;
+        max-width: 20%;
+    }
+    .Bar_Top_Btn_Interface button svg
+    {
+        height: 100%;
+    }
+    .Bar_Top
+    {
+        height: 9%;
+    }
+}
+
+

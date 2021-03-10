@@ -1,0 +1,42 @@
+@media only screen and (max-width: 600px)
+{
+    .WidgetWindow
+    {
+        display: flex;
+        flex-direction: column;
+        grid: none;
+    }
+    .Widget
+    {
+        height: 30%;
+        width: auto;
+    }
+    .day_png p
+    {
+        font-size: 12px;
+    }
+    .WidgetWindow
+    {
+        height: 91%;
+    }
+}
+@media only screen and (min-width: 600px) and (max-device-width: 900px) {
+
+    .day_png p
+    {
+        font-size: 16px;
+    }
+    .WidgetWindow
+    {
+       display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .Widget
+    {
+        height: 30%;
+        width: 45%;
+    }
+
+}
+

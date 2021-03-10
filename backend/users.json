@@ -12,56 +12,6 @@
 					"lon": 27.566668,
 					"lat": 53.900002
 				}
-			},
-			{
-				"id": 11263,
-				"name": "Shahrīār Kandeh",
-				"state": "",
-				"country": "IR",
-				"coord": {
-					"lon": 53.19902,
-					"lat": 36.631939
-				}
-			},
-			{
-				"id": 148724,
-				"name": "Zanzibar Urban/West Region",
-				"state": "",
-				"country": "TZ",
-				"coord": {
-					"lon": 39.25,
-					"lat": -6.16667
-				}
-			},
-			{
-				"id": 623549,
-				"name": "Pinsk",
-				"state": "",
-				"country": "BY",
-				"coord": {
-					"lon": 26.0951,
-					"lat": 52.122898
-				}
-			},
-			{
-				"id": 18918,
-				"name": "Protaras",
-				"state": "",
-				"country": "CY",
-				"coord": {
-					"lon": 34.058331,
-					"lat": 35.012501
-				}
-			},
-			{
-				"id": 7626528,
-				"name": "agz installatietechniek",
-				"state": "",
-				"country": "NL",
-				"coord": {
-					"lon": 4.81981,
-					"lat": 52.64555
-				}
 			}
 		],
 		"theme": " dark"
@@ -98,6 +48,12 @@
 	{
 		"login": "userVit",
 		"password": "1234",
+		"cities": [],
+		"theme": ""
+	},
+	{
+		"login": "QQQQQQQQQQQQQQQQQ",
+		"password": "1",
 		"cities": [],
 		"theme": ""
 	}

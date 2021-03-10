@@ -17,3 +17,11 @@
 {
   background: #373737;
 }
+
+
+@media only screen and (max-width: 600px)
+{
+  *{
+    font-size: 12px;
+  }
+}
