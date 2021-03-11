@@ -12,6 +12,16 @@
 					"lon": 27.566668,
 					"lat": 53.900002
 				}
+			},
+			{
+				"id": 18093,
+				"name": "Dīgāleh",
+				"state": "",
+				"country": "IR",
+				"coord": {
+					"lon": 45.106998,
+					"lat": 37.552502
+				}
 			}
 		],
 		"theme": " dark"
@@ -55,6 +65,29 @@
 		"login": "QQQQQQQQQQQQQQQQQ",
 		"password": "1",
 		"cities": [],
+		"theme": ""
+	},
+	{
+		"login": "sky12",
+		"password": "12",
+		"cities": [],
+		"theme": ""
+	},
+	{
+		"login": "gg",
+		"password": "123",
+		"cities": [
+			{
+				"id": 6354985,
+				"name": "güngören merter",
+				"state": "",
+				"country": "TR",
+				"coord": {
+					"lon": 28.887951,
+					"lat": 41.007111
+				}
+			}
+		],
 		"theme": ""
 	}
 ]
