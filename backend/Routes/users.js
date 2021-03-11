@@ -3,7 +3,7 @@ const cors = require("cors");
 const {Router} = require("express");
 const router = Router();
 
-router.put("/users/update",cors(),(req,res)=>{
+router.put("/users",cors(),(req,res)=>{
     new Promise((resolve, reject)=>{
         fs.readFile("./user.json",(error, data)=>{
             if(error)

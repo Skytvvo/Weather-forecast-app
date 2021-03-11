@@ -1,8 +1,9 @@
 const fs = require("fs");
+const cors = require("cors");
 const {Router} = require("express");
 const router = Router();
 
-router.post("/login",(req,res)=>{
+router.post("/login",cors(),(req,res)=>{
     new Promise((resolve,reject) => {
         fs.readFile( "./user.json",(error,data)=>
         {
@@ -16,10 +17,6 @@ router.post("/login",(req,res)=>{
             let match = data.find((element, index, array)=>{
                 return element.login === req.body.login;
             })
-
-            res.append('Access-Control-Allow-Origin', ['*']);
-            res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-            res.append('Access-Control-Allow-Headers', 'Content-Type');
 
             if(match===undefined)
             {

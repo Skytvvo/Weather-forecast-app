@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from "react";
-import "./index.css";
-import "./dark.css";
-import "./responsive.css";
+import "./Styles/index.css";
+import "./Styles/dark.css";
+import "./Styles/responsive.css";
 
 export default ({onSetUser}) => {
 

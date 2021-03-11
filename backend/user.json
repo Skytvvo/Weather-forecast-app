@@ -4,6 +4,26 @@
 		"password": "12",
 		"cities": [
 			{
+				"id": 134518,
+				"name": "Fīrūzābād",
+				"state": "",
+				"country": "IR",
+				"coord": {
+					"lon": 52.570702,
+					"lat": 28.8438
+				}
+			},
+			{
+				"id": 95446,
+				"name": "Erbil",
+				"state": "",
+				"country": "IQ",
+				"coord": {
+					"lon": 44.01062,
+					"lat": 36.19257
+				}
+			},
+			{
 				"id": 625144,
 				"name": "Minsk",
 				"state": "",
@@ -11,16 +31,6 @@
 				"coord": {
 					"lon": 27.566668,
 					"lat": 53.900002
-				}
-			},
-			{
-				"id": 18093,
-				"name": "Dīgāleh",
-				"state": "",
-				"country": "IR",
-				"coord": {
-					"lon": 45.106998,
-					"lat": 37.552502
 				}
 			}
 		],

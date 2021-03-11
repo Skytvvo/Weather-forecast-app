@@ -30,7 +30,7 @@ function App() {
     }
 
     const updateWidgets=(obj)=>{
-        fetch("http://localhost:9999/users/update",{
+        fetch("http://localhost:9999/users",{
             method:"PUT",
             headers:{
                 "Content-Type":"application/json;charset=utf-8"
