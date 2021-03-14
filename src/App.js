@@ -50,11 +50,31 @@ function App() {
         updateWidgets(user);
     }
 
-    const onSetUser = (userData) => {
-        const newWidgets = [...widgets,...userData.cities]
+     const  onSetUser = (userData) => {
+
+         fetch("http://localhost:9999/api/users",{
+             method:"PUT",
+             headers:{
+                 "Content-Type":"application/json;charset=utf-8",
+                 "Authorization":userData.token
+             },
+             body:JSON.stringify({})
+         })
+             .then(data => JSON.parse(data))
+             .then(data=>{
+                 setTheme(data.theme);
+                 const newWidgets = [...widgets,...userData.cities];
+                 setWidgets(newWidgets);
+                 setUser({
+                     login:data.login
+
+                 })
+             })
+             .catch(err=>console.log(err))
+        /*const newWidgets = [...widgets,...userData.cities]
         setWidgets(newWidgets);
         setTheme(userData.theme);
-        setUser(userData)
+        setUser(userData)*/
     }
 
 

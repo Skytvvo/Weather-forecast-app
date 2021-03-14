@@ -1,29 +1,44 @@
 const express = require("express");
 const app = express();
+const config = require("../Config/default.json");
 
-const PORT = process.env.PORT || 9999;
+const PORT =  config.port || 9999;
+const mongoose = require("mongoose");
 
 const cors = require('cors');
 app.options("*",cors());
 
-//routes
-const forecast = require("./Routes/forecast");
-const login = require("./Routes/login");
-const reg = require("./Routes/reg");
-const city = require("./Routes/city");
-const users = require("./Routes/users");
-
 app.use(express.json());
-app.use(forecast);
-app.use(login);
-app.use(reg);
-app.use(city);
-app.use(users);
+
+//routes
+app.use("/api" ,require("./Routes/forecast"));
+app.use("/api/auth" ,require("./Routes/auth"));
+app.use(require("./Routes/city"));
+app.use("/api",require("./Routes/users"));
 
 app.get("/", (req,res)=>{
    res.send("Hello")
 })
 
-app.listen(PORT, ()=>console.log(`The server is running on the PORT ${PORT}`));
+async function RunServer()
+{
+   try
+   {
+      await mongoose.connect(config.url,
+          {
+             useCreateIndex:true,
+             useUnifiedTopology: true,
+             useNewUrlParser:true
+          })
+      app.listen(PORT, ()=>console.log(`The server is running on the PORT ${PORT}`));
 
 
+   }
+   catch (err)
+   {
+      console.log(err);
+      process.exit(1);
+   }
+}
+
+RunServer();

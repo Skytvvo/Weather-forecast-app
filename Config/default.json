@@ -1,0 +1,5 @@
+{
+  "port": 9999,
+  "url": "mongodb+srv://UserEx:1234@cluster0.cn1sq.mongodb.net/WeatherData?retryWrites=true&w=majority",
+  "jwtKeyWord": "qwerqwadasd123"
+}

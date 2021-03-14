@@ -1,49 +1,28 @@
-const fs = require("fs");
+const auth = require("../components/auth.middleware");
 const cors = require("cors");
 const {Router} = require("express");
 const router = Router();
+const User = require("../components/User");
 
-router.put("/users",cors(),(req,res)=>{
-    new Promise((resolve, reject)=>{
-        fs.readFile("./user.json",(error, data)=>{
-            if(error)
-                reject(error);
-            resolve(data);
-        })
-    })
-        .then(data=>JSON.parse(data))
-        .then(data=>{
-            let user = data.findIndex(item => item.login === req.body.login);
+router.use(cors())
 
-            if(user === -1)
+router.put(
+    "/users",
+    auth,
+    async (req,res)=>{
+            const userData = await User.findOne({_id:req.user.userId});
+            if(!userData)
             {
-                throw new Error("Unknown user")
+                return res.status(404)
+                    .json({
+                        message:"No name user"
+                    })
             }
-            else
-            {
-                if(data[user].password !== req.body.password)
-                {
-                    res.status(403);
-                    res.send();
-                    throw new Error("Incorrect password");
-                }
-
-                data[user].cities = req.body.cities;
-                data[user].theme = req.body.theme;
-                res.status(200);
-                res.send()
-                return data;
-            }
-
-
-        })
-        .then(data=>{
-            fs.writeFile("./user.json", JSON.stringify(data, null, '\t'),(err)=>{
-                if(err)
-                    throw err;
-            })
-        })
-        .catch(err=>console.log(err))
+            res.json({
+                login:userData.login,
+                theme:userData.theme,
+                cities:userData.cities
+            });
 })
 
 module.exports = router;

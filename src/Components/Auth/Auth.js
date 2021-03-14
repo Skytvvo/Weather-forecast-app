@@ -20,7 +20,7 @@ export default ({onSetUser}) => {
 
     const logToApp = (log = login,pass=password) =>{
 
-        fetch("http://localhost:9999/login",{
+        fetch("http://localhost:9999/api/auth/log",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json;charset=utf-8"
@@ -55,7 +55,7 @@ export default ({onSetUser}) => {
     }
 
     const regToApp=()=>{
-         fetch("http://localhost:9999/reg",{
+         fetch("http://localhost:9999/api/auth/reg",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json;charset=utf-8"
@@ -66,7 +66,7 @@ export default ({onSetUser}) => {
             })
         })
             .then(data=>data.json())
-            .then(data=>onSetUser(data))
+            .then(()=>logToApp())
             .catch(err=>console.log(err))
     }
 
@@ -78,7 +78,8 @@ export default ({onSetUser}) => {
         if(localStorage.getItem("user")!==null)
         {
             let user = JSON.parse(localStorage.getItem("user"));
-            logToApp(user.login,user.password)
+
+            onSetUser(user);
         }
     },[])
 
