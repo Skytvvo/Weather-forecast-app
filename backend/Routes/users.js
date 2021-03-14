@@ -25,4 +25,13 @@ router.put(
             });
 })
 
+router.put(
+    "/theme",
+    auth,
+    async (req,res)=>{
+        await User.updateOne({_id:req.user.userId},{theme:req.body.theme})
+    }
+
+)
+
 module.exports = router;

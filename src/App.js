@@ -3,6 +3,9 @@ import TopBar from "./Components/MenuBar/MenuBar";
 import WidgetWindow from "./Components/WidgetWindow/Window";
 import Panel from "./Components/NewWidget/NewWidget";
 import Auth from "./Components/Auth/Auth";
+
+
+
 function App() {
 
     const [widgets,setWidgets] = useState([]);
@@ -16,8 +19,9 @@ function App() {
             ...widgets,widget
         ];
         setWidgets(newWidgets);
+       /*
         user.cities = newWidgets;
-        updateWidgets(user)
+        updateWidgets(user)*/
     }
 
     const checkCity = (newCity) =>{
@@ -60,21 +64,18 @@ function App() {
              },
              body:JSON.stringify({})
          })
-             .then(data => JSON.parse(data))
+             .then(data => data.json())
              .then(data=>{
+                 console.log(data)
                  setTheme(data.theme);
-                 const newWidgets = [...widgets,...userData.cities];
-                 setWidgets(newWidgets);
-                 setUser({
-                     login:data.login
 
+                 setUser({
+                     login:data.login,
+                     token:userData.token,
+                     cities:data.cities
                  })
              })
              .catch(err=>console.log(err))
-        /*const newWidgets = [...widgets,...userData.cities]
-        setWidgets(newWidgets);
-        setTheme(userData.theme);
-        setUser(userData)*/
     }
 
 
@@ -83,17 +84,26 @@ function App() {
     }
 
     const changeTheme= () => {
-        const updatedUser = user;
+        let newTheme = "";
         if(theme.length === 0)
         {
-            updatedUser.theme = " dark";
+            newTheme=" dark";
+
         }
         else {
-            updatedUser.theme = "";
+            newTheme="";
         }
-        setTheme(updatedUser.theme);
-        setUser(updatedUser);
-        updateWidgets(updatedUser);
+        setTheme(newTheme);
+
+        fetch("http://localhost:9999/api/theme",{
+            method:"PUT",
+            headers:{
+                "Content-Type":"application/json;charset=utf-8",
+                "Authorization":user.token
+            },
+            body:JSON.stringify({theme:newTheme})
+        })
+            .catch(err=>console.log(err))
     }
 
   return (

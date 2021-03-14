@@ -1,13 +1,14 @@
 const {Schema, model, Types} = require("mongoose");
 
 const schema = new Schema({
-    id: {type :Number, required: true},
+    _id:Schema.Types.ObjectId,
+    id :Number,
     name: String,
     state: String,
     country: String,
     coord:{
-        lon:Number,
-        lan:Number
+        lat: Number,
+        lon: Number
     }
 })
 

@@ -54,7 +54,7 @@ export default ({onSetUser}) => {
             .catch(err=>console.log(err))
     }
 
-    const regToApp=()=>{
+     const regToApp=()=>{
          fetch("http://localhost:9999/api/auth/reg",{
             method:"POST",
             headers:{

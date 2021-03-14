@@ -13,7 +13,7 @@ app.use(express.json());
 //routes
 app.use("/api" ,require("./Routes/forecast"));
 app.use("/api/auth" ,require("./Routes/auth"));
-app.use(require("./Routes/city"));
+app.use("/api",require("./Routes/city"));
 app.use("/api",require("./Routes/users"));
 
 app.get("/", (req,res)=>{

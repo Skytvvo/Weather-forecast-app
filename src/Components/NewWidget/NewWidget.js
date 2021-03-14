@@ -11,7 +11,7 @@ const Panel = ({onChangePanel, onAdd, theme, onCheckCity}) =>{
     const [errorState,setErrorState] = useState(false);
     const [suggest, setSuggest] = useState([])
 
-    const suggestRequest = ( city ) =>{
+     const suggestRequest = ( city ) =>{
         setErrorState(false);
         if( city === "" )
         {
@@ -19,7 +19,7 @@ const Panel = ({onChangePanel, onAdd, theme, onCheckCity}) =>{
             return;
         }
 
-        fetch("http://localhost:9999/city",
+        fetch("http://localhost:9999/api/city",
             {
                 method:"POST",
                 headers:{
