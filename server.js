@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+
 const config = require("./Config/default.json");
 
 
@@ -7,7 +8,9 @@ const PORT =  process.env.PORT || 9999;
 const mongoose = require("mongoose");
 
 const cors = require('cors');
+const path = require("path");
 app.options("*",cors());
+app.use(express.static(path.join(__dirname,"/build")))
 
 app.use(express.json());
 
