@@ -3,7 +3,7 @@ const app = express();
 const config = require("../Config/default.json");
 
 
-const PORT =  config.port || 9999;
+const PORT =  process.env.PORT || 9999;
 const mongoose = require("mongoose");
 
 const cors = require('cors');
@@ -11,7 +11,7 @@ app.options("*",cors());
 
 app.use(express.json());
 
-//routes
+
 app.use("/api" ,require("./Routes/forecast"));
 app.use("/api/auth" ,require("./Routes/auth"));
 app.use("/api",require("./Routes/city"));

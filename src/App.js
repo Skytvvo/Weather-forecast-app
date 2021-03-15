@@ -125,9 +125,10 @@ function App() {
     }
 
   return (
-      <div className={"window" + theme}>
 
-          {!user?
+    <div className={"window" + theme}>
+
+        {!user?
               (<Auth onSetUser={onSetUser} />)
               :("")}
           {user?
