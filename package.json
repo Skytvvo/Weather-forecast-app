@@ -23,10 +23,10 @@
   },
   "proxy": "http://localhost:9999",
   "scripts": {
-    "start": "concurrently \"npm run front\" \"npm run server\"",
+    "start": "react-scripts start",
     "front": "react-scripts start",
-    "server": "cd backend && node server.js",
-    "devserver": "cd backend && nodemon server.js",
+    "server": "node server.js",
+    "devserver": "nodemon server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const config = require("../Config/default.json");
+const config = require("./Config/default.json");
 
 
 const PORT =  process.env.PORT || 9999;
@@ -12,10 +12,10 @@ app.options("*",cors());
 app.use(express.json());
 
 
-app.use("/api" ,require("./Routes/forecast"));
-app.use("/api/auth" ,require("./Routes/auth"));
-app.use("/api",require("./Routes/city"));
-app.use("/api",require("./Routes/users"));
+app.use("/api" ,require("./backend/Routes/forecast"));
+app.use("/api/auth" ,require("./backend/Routes/auth"));
+app.use("/api",require("./backend/Routes/city"));
+app.use("/api",require("./backend/Routes/users"));
 
 app.get("/", (req,res)=>{
    res.send("Hello")
