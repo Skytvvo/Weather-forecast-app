@@ -54,6 +54,7 @@ const Widget = ({theme, data, onDelete}) => {
             })
             .then(response => response.json())
             .then(response=> {
+                response._id = data._id;
                 setForecast(response);
                 setApiLimit(false);
                 setLoading(false);

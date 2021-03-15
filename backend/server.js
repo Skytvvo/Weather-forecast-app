@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const config = require("../Config/default.json");
 
+
 const PORT =  config.port || 9999;
 const mongoose = require("mongoose");
 
@@ -28,7 +29,8 @@ async function RunServer()
           {
              useCreateIndex:true,
              useUnifiedTopology: true,
-             useNewUrlParser:true
+             useNewUrlParser:true,
+              useFindAndModify:false
           })
       app.listen(PORT, ()=>console.log(`The server is running on the PORT ${PORT}`));
 

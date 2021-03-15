@@ -13,15 +13,23 @@ function App() {
     const [theme,setTheme] = useState("")
     const [user,setUser] = useState(null);
 
-    const onAddWidget = (widget) =>{
+    async function onAddWidget (widget){
         onChangePanel(false);
         const newWidgets = [
             ...widgets,widget
         ];
         setWidgets(newWidgets);
-       /*
-        user.cities = newWidgets;
-        updateWidgets(user)*/
+        await fetch("http://localhost:9999/api/users/set",{
+            method:"PUT",
+            headers:{
+                "Content-Type":"application/json;charset=utf-8",
+                "Authorization":user.token
+            },
+            body:JSON.stringify({
+                cityId:widget._id
+            })
+        })
+            .catch(err=>console.log(err))
     }
 
     const checkCity = (newCity) =>{
@@ -29,34 +37,28 @@ function App() {
         {
             return false;
         }
-        return widgets.filter(item => (item.id === newCity.id)).length === 0;
+        return widgets.filter(item => (item._id === newCity._id)).length === 0;
 
     }
 
-    const updateWidgets=(obj)=>{
-        fetch("http://localhost:9999/users",{
-            method:"PUT",
+
+    const onDeleteWidget = (widget)=>{
+        const newWidgets = widgets.filter(item=>item._id!==widget._id);
+        setWidgets(newWidgets);
+        fetch("http://localhost:9999/api/remove",{
+            method:"DELETE",
             headers:{
-                "Content-Type":"application/json;charset=utf-8"
+                "Content-Type":"application/json;charset=utf-8",
+                "Authorization":user.token
             },
-            body:JSON.stringify(obj)
+            body:JSON.stringify({_id:widget._id})
         })
             .catch(err=>console.log(err))
     }
 
-
-
-    const onDeleteWidget = (widget)=>{
-        //bug with London(US) and London(US) with different states (API problem)
-       const newWidgets = widgets.filter(item=>(item.id!==widget.city.id && widget.city.id !== 4517009))
-        setWidgets(newWidgets);
-        user.cities = newWidgets;
-        updateWidgets(user);
-    }
-
-     const  onSetUser = (userData) => {
-
-         fetch("http://localhost:9999/api/users",{
+      function  onSetUser (userData)  {
+        let newWidgets =[];
+           fetch("http://localhost:9999/api/users/get",{
              method:"PUT",
              headers:{
                  "Content-Type":"application/json;charset=utf-8",
@@ -66,18 +68,34 @@ function App() {
          })
              .then(data => data.json())
              .then(data=>{
-                 console.log(data)
+
                  setTheme(data.theme);
 
                  setUser({
                      login:data.login,
-                     token:userData.token,
-                     cities:data.cities
+                     token:userData.token
                  })
+                 data.cities.forEach(async function (id){
+                    await fetch("http://localhost:9999/api/city/id",
+                         {
+                             method:"POST",
+                             headers:{
+                                 "Content-Type":'application/json;charset=utf-8'
+                             },
+                             body:JSON.stringify({id})
+                         }
+                     )
+                        .then(data=>data.json())
+                        .then(data=>{
+                            newWidgets = [...newWidgets,data]
+                        })
+                        .catch(err => console.log(err))
+                     setWidgets(newWidgets)
+                 })
+
              })
              .catch(err=>console.log(err))
     }
-
 
     const onChangePanel = (expression) => {
         setPanel(expression)

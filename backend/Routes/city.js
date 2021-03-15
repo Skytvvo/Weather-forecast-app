@@ -14,4 +14,11 @@ router.post(
         res.json(searching);
 })
 
+router.post(
+    "/city/id",
+    async (req,res)=>{
+            const searching = await City.findOne({ _id:req.body.id})
+            res.json(searching);
+    })
+
 module.exports = router;
