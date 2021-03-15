@@ -39,7 +39,7 @@ const Widget = ({theme, data, onDelete}) => {
 
     const makeRequest = ()=>{
 
-        fetch("http://localhost:9999/api/forecast",
+        fetch("/api/forecast",
             {
                 method:"POST",
                 headers:{

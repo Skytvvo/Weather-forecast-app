@@ -19,7 +19,7 @@ function App() {
             ...widgets,widget
         ];
         setWidgets(newWidgets);
-        await fetch("http://localhost:9999/api/users/set",{
+        await fetch("/api/users/set",{
             method:"PUT",
             headers:{
                 "Content-Type":"application/json;charset=utf-8",
@@ -45,7 +45,7 @@ function App() {
     const onDeleteWidget = (widget)=>{
         const newWidgets = widgets.filter(item=>item._id!==widget._id);
         setWidgets(newWidgets);
-        fetch("http://localhost:9999/api/remove",{
+        fetch("/api/remove",{
             method:"DELETE",
             headers:{
                 "Content-Type":"application/json;charset=utf-8",
@@ -58,7 +58,7 @@ function App() {
 
       function  onSetUser (userData)  {
         let newWidgets =[];
-           fetch("http://localhost:9999/api/users/get",{
+           fetch("/api/users/get",{
              method:"PUT",
              headers:{
                  "Content-Type":"application/json;charset=utf-8",
@@ -76,7 +76,7 @@ function App() {
                      token:userData.token
                  })
                  data.cities.forEach(async function (id){
-                    await fetch("http://localhost:9999/api/city/id",
+                    await fetch("/api/city/id",
                          {
                              method:"POST",
                              headers:{
@@ -113,7 +113,7 @@ function App() {
         }
         setTheme(newTheme);
 
-        fetch("http://localhost:9999/api/theme",{
+        fetch("/api/theme",{
             method:"PUT",
             headers:{
                 "Content-Type":"application/json;charset=utf-8",

@@ -20,7 +20,7 @@ export default ({onSetUser}) => {
 
     const logToApp = (log = login,pass=password) =>{
 
-        fetch("http://localhost:9999/api/auth/log",{
+        fetch("/api/auth/log",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json;charset=utf-8"
@@ -55,7 +55,7 @@ export default ({onSetUser}) => {
     }
 
      const regToApp=()=>{
-         fetch("http://localhost:9999/api/auth/reg",{
+         fetch("/api/auth/reg",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json;charset=utf-8"

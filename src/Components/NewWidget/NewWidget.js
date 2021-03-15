@@ -19,7 +19,7 @@ const Panel = ({onChangePanel, onAdd, theme, onCheckCity}) =>{
             return;
         }
 
-        fetch("http://localhost:9999/api/city",
+        fetch("/api/city",
             {
                 method:"POST",
                 headers:{
